@@ -15,16 +15,26 @@ function App() {
   const [assessmentId, setAssessmentId] = useState<string>('');
 
   useEffect(() => {
+    const path = window.location.pathname;
     const params = new URLSearchParams(window.location.search);
-    const page = params.get('page') as Page;
-    const slug = params.get('slug');
-    const aId = params.get('assessment_id');
 
-    if (page && ['home', 'assessment', 'programs', 'blog', 'blog-post', 'results'].includes(page)) {
-      setCurrentPage(page);
+    if (path === '/' || path === '') {
+      setCurrentPage('home');
+    } else if (path === '/assessment') {
+      setCurrentPage('assessment');
+    } else if (path === '/programs') {
+      setCurrentPage('programs');
+    } else if (path === '/blog') {
+      setCurrentPage('blog');
+    } else if (path.startsWith('/blog/')) {
+      const slug = path.replace('/blog/', '');
+      setCurrentPage('blog-post');
+      setSelectedBlogSlug(slug);
+    } else if (path === '/results') {
+      setCurrentPage('results');
+      const aId = params.get('assessment_id');
+      if (aId) setAssessmentId(aId);
     }
-    if (slug) setSelectedBlogSlug(slug);
-    if (aId) setAssessmentId(aId);
   }, []);
 
   const handleNavigate = (page: Page, options?: { slug?: string; assessmentId?: string }) => {
@@ -32,7 +42,14 @@ function App() {
     if (options?.slug) setSelectedBlogSlug(options.slug);
     if (options?.assessmentId) setAssessmentId(options.assessmentId);
 
-    const url = `/?page=${page}${options?.slug ? `&slug=${options.slug}` : ''}${options?.assessmentId ? `&assessment_id=${options.assessmentId}` : ''}`;
+    let url = '/';
+    if (page === 'home') url = '/';
+    else if (page === 'assessment') url = '/assessment';
+    else if (page === 'programs') url = '/programs';
+    else if (page === 'blog') url = '/blog';
+    else if (page === 'blog-post' && options?.slug) url = `/blog/${options.slug}`;
+    else if (page === 'results' && options?.assessmentId) url = `/results?assessment_id=${options.assessmentId}`;
+
     window.history.pushState({}, '', url);
 
     if (typeof window.gtag !== 'undefined') {
