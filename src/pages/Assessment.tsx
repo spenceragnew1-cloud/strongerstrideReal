@@ -14,9 +14,12 @@ export default function AssessmentPage({ onNavigate }: AssessmentPageProps) {
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [userEmail, setUserEmail] = useState('');
+  const [emailInput, setEmailInput] = useState('');
   const [assessment, setAssessment] = useState<Assessment | null>(null);
   const [results, setResults] = useState<Record<string, number>>({});
   const [submitting, setSubmitting] = useState(false);
+  const [showEmailCapture, setShowEmailCapture] = useState(false);
+  const [emailError, setEmailError] = useState('');
 
   useEffect(() => {
     const loadAssessment = async () => {
@@ -90,21 +93,69 @@ export default function AssessmentPage({ onNavigate }: AssessmentPageProps) {
     }
   };
 
-  const handleSubmit = async () => {
-    if (!assessment) return;
-    setSubmitting(true);
+  const handleCompleteExercises = () => {
+    setShowEmailCapture(true);
+  };
 
-    const { error } = await supabase
+  const validateEmail = (email: string) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+
+  const handleSubmitEmail = async () => {
+    if (!assessment) return;
+
+    if (!emailInput.trim()) {
+      setEmailError('Please enter your email address');
+      return;
+    }
+
+    if (!validateEmail(emailInput)) {
+      setEmailError('Please enter a valid email address');
+      return;
+    }
+
+    setSubmitting(true);
+    setEmailError('');
+
+    const { error: updateError } = await supabase
       .from('assessments')
-      .update({ is_complete: true, completed_at: new Date().toISOString() })
+      .update({
+        user_email: emailInput,
+        is_complete: true,
+        completed_at: new Date().toISOString()
+      })
       .eq('id', assessment.id);
 
-    if (error) {
-      console.error('Error completing assessment:', error);
+    if (updateError) {
+      console.error('Error updating assessment:', updateError);
+      setEmailError('Something went wrong. Please try again.');
       setSubmitting(false);
       return;
     }
 
+    try {
+      const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-assessment-results`;
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          assessmentId: assessment.id,
+          email: emailInput,
+        }),
+      });
+
+      if (!response.ok) {
+        console.error('Error sending email:', await response.text());
+      }
+    } catch (error) {
+      console.error('Error calling email function:', error);
+    }
+
+    localStorage.setItem('assessmentEmail', emailInput);
     setSubmitting(false);
     onNavigate('results', { assessmentId: assessment.id });
   };
@@ -133,6 +184,63 @@ export default function AssessmentPage({ onNavigate }: AssessmentPageProps) {
   const currentExercise = exercises[currentExerciseIndex];
   const progress = Math.round(((currentExerciseIndex + 1) / exercises.length) * 100);
   const isCompleted = currentExerciseIndex === exercises.length - 1 && results[currentExercise.id];
+
+  if (showEmailCapture) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-slate-50 flex items-center justify-center px-4">
+        <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8">
+          <div className="text-center mb-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
+              <CheckCircle className="w-8 h-8 text-green-600" />
+            </div>
+            <h2 className="text-2xl font-bold text-slate-900 mb-2">Assessment Complete!</h2>
+            <p className="text-slate-600">
+              Enter your email to receive your personalized results and see them now.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
+                Email Address
+              </label>
+              <input
+                type="email"
+                id="email"
+                value={emailInput}
+                onChange={(e) => {
+                  setEmailInput(e.target.value);
+                  setEmailError('');
+                }}
+                placeholder="you@example.com"
+                className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all ${
+                  emailError
+                    ? 'border-red-300 focus:ring-red-500'
+                    : 'border-slate-300 focus:ring-green-500'
+                }`}
+                disabled={submitting}
+              />
+              {emailError && (
+                <p className="mt-2 text-sm text-red-600">{emailError}</p>
+              )}
+            </div>
+
+            <button
+              onClick={handleSubmitEmail}
+              disabled={submitting}
+              className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {submitting ? 'Sending...' : 'Get My Results'}
+            </button>
+
+            <p className="text-xs text-slate-500 text-center">
+              We'll email you a copy of your results for future reference.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="h-[calc(100vh-64px)] bg-gradient-to-br from-green-50 to-slate-50 flex flex-col overflow-hidden">
@@ -212,11 +320,11 @@ export default function AssessmentPage({ onNavigate }: AssessmentPageProps) {
 
           {isCompleted ? (
             <button
-              onClick={handleSubmit}
+              onClick={handleCompleteExercises}
               disabled={submitting}
               className="ml-auto flex items-center gap-2 bg-green-600 text-white px-6 py-2 rounded-lg font-semibold text-sm hover:bg-green-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <CheckCircle className="w-4 h-4" /> {submitting ? 'Completing...' : 'Complete Assessment'}
+              <CheckCircle className="w-4 h-4" /> Complete Assessment
             </button>
           ) : (
             <button
