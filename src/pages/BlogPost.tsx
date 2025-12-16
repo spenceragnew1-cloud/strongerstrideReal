@@ -260,14 +260,21 @@ export default function BlogPostPage({ slug, onNavigate }: BlogPostProps) {
         </div>
 
         {/* Author Bio */}
-        {post.author_bio && (
-          <div className="mt-12 pt-8 border-t border-slate-200">
-            <h3 className="text-xl font-bold text-slate-900 mb-3">About the Author</h3>
-            <div className="bg-gradient-to-br from-green-50 to-slate-50 rounded-xl p-6">
-              <p className="text-slate-700 leading-relaxed">{post.author_bio}</p>
-            </div>
+        <div className="mt-12 pt-8 border-t border-slate-200">
+          <h3 className="text-xl font-bold text-slate-900 mb-3">About the Author</h3>
+          <div className="bg-gradient-to-br from-green-50 to-slate-50 rounded-xl p-6">
+            <p className="text-slate-700 leading-relaxed">
+              Dr. Spencer Agnew is a Doctor of Physical Therapy specializing in running biomechanics and performance. He has worked with over 500 runners as both a physical therapist and coach, and is the founder of{' '}
+              <a 
+                href="https://ascentendurancegroup.com" 
+                className="text-green-600 hover:text-green-700 font-semibold underline"
+              >
+                Ascent Endurance Group
+              </a>
+              , where he helps runners build durable strength and long-term consistency.
+            </p>
           </div>
-        )}
+        </div>
 
         {/* CTA Box */}
         <div className="mt-12 bg-gradient-to-br from-green-600 to-green-700 rounded-2xl p-8 md:p-10 text-white shadow-xl">
