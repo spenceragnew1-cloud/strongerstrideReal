@@ -1,5 +1,6 @@
 import { ArrowRight, Target, Award, User, BookOpen, TrendingUp } from 'lucide-react';
 import { trackAssessmentButtonClick } from '../lib/analytics';
+import MetaTags from '../components/MetaTags';
 
 type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results';
 
@@ -14,7 +15,14 @@ export default function Home({ onNavigate }: HomeProps) {
   };
 
   return (
-    <div className="bg-white">
+    <>
+      <MetaTags
+        title="StrongerStride - Strength Training for Runners | Free Assessment"
+        description="Take a 10-minute, research-based assessment to discover which weaknesses are affecting your running—and get a personalized 12-week program to fix them. Created by a Doctor of Physical Therapy."
+        canonical="https://strongerstride.com/"
+        type="website"
+      />
+      <div className="bg-white">
       {/* SECTION 1 - HERO */}
       <section className="max-w-5xl mx-auto px-4 py-20 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
@@ -250,5 +258,6 @@ export default function Home({ onNavigate }: HomeProps) {
         </div>
       </section>
     </div>
+    </>
   );
 }

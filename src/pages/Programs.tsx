@@ -3,6 +3,7 @@ import { supabase, Program } from '../lib/supabase';
 import ProgramDetailCard from '../components/ProgramDetailCard';
 import { AlertCircle } from 'lucide-react';
 import { trackProgramClick, trackAssessmentButtonClick } from '../lib/analytics';
+import MetaTags from '../components/MetaTags';
 
 type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results';
 
@@ -56,7 +57,14 @@ export default function Programs({ onNavigate }: ProgramsProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-slate-50">
+    <>
+      <MetaTags
+        title="Evidence-Based Strength Programs for Runners | StrongerStride"
+        description="12-week strength programs designed to target specific deficits and improve running performance and injury resilience. Each program is built using sports science principles."
+        canonical="https://strongerstride.com/programs"
+        type="website"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-slate-50">
       <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">
@@ -112,5 +120,6 @@ export default function Programs({ onNavigate }: ProgramsProps) {
         </div>
       </div>
     </div>
+    </>
   );
 }

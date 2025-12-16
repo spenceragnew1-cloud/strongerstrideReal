@@ -79,6 +79,13 @@ INSERT INTO blog_posts (
 
 <p>This happens because the underlying cause was never addressed.</p>
 
+<div style="background-color: #f8fafc; border-left: 4px solid #059669; padding: 24px; margin: 32px 0; border-radius: 8px;">
+<h3 style="margin-top: 0; color: #0f172a; font-size: 1.25rem; font-weight: 600;">Not Sure If This Applies to You?</h3>
+<p style="color: #475569; margin-bottom: 16px; line-height: 1.6;">Research shows strength needs vary widely between runners. Instead of guessing, you can identify your specific limiting factors in under 10 minutes.</p>
+<p style="margin-bottom: 0;"><a href="/assessment" style="display: inline-block; background-color: #059669; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background-color 0.2s;">Take the Free Runner Strength Assessment</a></p>
+<p style="margin-top: 12px; margin-bottom: 0; font-size: 0.875rem; color: #64748b;">Based on research • Created by a Doctor of Physical Therapy</p>
+</div>
+
 <h2>What Actually Works: Hip Strengthening</h2>
 
 <p>Now for the good news: IT band syndrome responds incredibly well to targeted hip strengthening.</p>
@@ -244,6 +251,12 @@ INSERT INTO blog_posts (
 </ul>
 
 <p>A physical therapist can assess your specific movement patterns, identify compensations, and create a targeted program for your individual needs.</p>
+
+<h2>Understanding Your Specific Weaknesses</h2>
+
+<p>The exercises outlined above are effective for most runners with IT band syndrome, but the specific areas of weakness vary from person to person. Some runners have significant glute medius weakness, while others struggle more with hip external rotation control or single-leg stability. The most effective approach is to identify your individual deficits and target them directly.</p>
+
+<p>Our free runner strength assessment evaluates your hip strength, movement patterns, and single-leg control to pinpoint exactly where you need to focus. Instead of following a generic program, you'll receive personalized recommendations based on your actual weaknesses. <a href="/assessment">Take the assessment</a> to discover your specific strength profile and get a targeted program designed for your individual needs.</p>
 
 <h2>The Bottom Line</h2>
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { supabase, BlogPost } from '../lib/supabase';
 import { ArrowRight, Calendar } from 'lucide-react';
+import MetaTags from '../components/MetaTags';
 
 type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results';
 
@@ -43,7 +44,14 @@ export default function Blog({ onNavigate }: BlogProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-slate-50">
+    <>
+      <MetaTags
+        title="Running Strength & Training Blog | StrongerStride"
+        description="Evidence-based insights on injury prevention, training strategies, and runner health. Learn from research-backed articles on strength training for runners."
+        canonical="https://strongerstride.com/blog"
+        type="website"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-slate-50">
       <div className="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">
@@ -122,5 +130,6 @@ export default function Blog({ onNavigate }: BlogProps) {
         )}
       </div>
     </div>
+    </>
   );
 }

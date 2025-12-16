@@ -236,6 +236,24 @@ export default function BlogPostPage({ slug, onNavigate }: BlogPostProps) {
           </div>
         </div>
 
+        {/* Assessment Callout */}
+        <div className="mb-8 bg-gradient-to-br from-green-50 to-slate-50 border-l-4 border-green-600 rounded-lg p-6 shadow-sm">
+          <div className="flex items-start gap-4">
+            <div className="flex-1">
+              <h3 className="text-lg font-semibold text-slate-900 mb-2">Discover Your Running Strength Profile</h3>
+              <p className="text-slate-700 mb-4 leading-relaxed">
+                Before diving into this article, consider taking our free runner strength assessment. In just 10 minutes, you'll identify your specific weaknesses and receive personalized recommendations to help you run stronger and stay injury-free.
+              </p>
+              <button
+                onClick={handleAssessmentClick}
+                className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors shadow-md hover:shadow-lg"
+              >
+                Take the Free Assessment →
+              </button>
+            </div>
+          </div>
+        </div>
+
         {/* Article Body */}
         <div className="prose prose-lg prose-slate max-w-none prose-headings:text-slate-900 prose-a:text-green-600 hover:prose-a:text-green-700">
           <div dangerouslySetInnerHTML={{ __html: post.content }} />

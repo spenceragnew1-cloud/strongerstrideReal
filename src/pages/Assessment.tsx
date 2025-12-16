@@ -3,6 +3,7 @@ import { supabase, Exercise, Assessment, AssessmentResult } from '../lib/supabas
 import ExerciseCard from '../components/ExerciseCard';
 import { ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react';
 import { trackAssessmentStarted } from '../lib/analytics';
+import MetaTags from '../components/MetaTags';
 
 type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results';
 
@@ -142,7 +143,14 @@ export default function AssessmentPage({ onNavigate }: AssessmentPageProps) {
   const isCompleted = currentExerciseIndex === exercises.length - 1 && results[currentExercise.id];
 
   return (
-    <div className="h-[calc(100vh-64px)] bg-gradient-to-br from-green-50 to-slate-50 flex flex-col overflow-hidden">
+    <>
+      <MetaTags
+        title="Free Runner Strength Assessment | StrongerStride"
+        description="Take a 10-minute, research-based strength assessment to identify your specific weaknesses and get personalized recommendations. Created by a Doctor of Physical Therapy."
+        canonical="https://strongerstride.com/assessment"
+        type="website"
+      />
+      <div className="h-[calc(100vh-64px)] bg-gradient-to-br from-green-50 to-slate-50 flex flex-col overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col min-h-0">
         <div className="mb-3 flex-shrink-0">
           <div className="flex items-center justify-between mb-2">
@@ -241,5 +249,6 @@ export default function AssessmentPage({ onNavigate }: AssessmentPageProps) {
         </div>
       </div>
     </div>
+    </>
   );
 }
