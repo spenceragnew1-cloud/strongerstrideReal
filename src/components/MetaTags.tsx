@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 
 interface MetaTagsProps {
   title: string;
@@ -25,8 +25,9 @@ export default function MetaTags({
   keywords,
   type = 'article',
 }: MetaTagsProps) {
-  useEffect(() => {
-    // Set title
+  // Use useLayoutEffect to update tags synchronously before paint
+  useLayoutEffect(() => {
+    // Set title immediately
     document.title = title;
 
     // Helper function to set or update meta tag
@@ -35,23 +36,36 @@ export default function MetaTags({
       if (!meta) {
         meta = document.createElement('meta');
         if (attribute === 'property') {
-          meta.setAttribute('property', selector.replace('meta[property="', '').replace('"]', ''));
+          const propertyName = selector.replace('meta[property="', '').replace('"]', '');
+          meta.setAttribute('property', propertyName);
         } else {
-          meta.setAttribute('name', selector.replace('meta[name="', '').replace('"]', ''));
+          const nameValue = selector.replace('meta[name="', '').replace('"]', '');
+          meta.setAttribute('name', nameValue);
         }
         document.head.appendChild(meta);
       }
       meta.setAttribute('content', content);
     };
 
-    // Helper function to set or update link tag
+    // Helper function to set or update link tag - ensures canonical is always updated
     const setLinkTag = (rel: string, href: string) => {
-      let link = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement;
+      // Find all existing links with this rel (should only be one, but handle multiple)
+      const existingLinks = document.querySelectorAll(`link[rel="${rel}"]`);
+      
+      // Remove any duplicate canonical links (keep only the first one)
+      if (existingLinks.length > 1) {
+        for (let i = 1; i < existingLinks.length; i++) {
+          existingLinks[i].remove();
+        }
+      }
+      
+      let link = existingLinks[0] as HTMLLinkElement;
       if (!link) {
         link = document.createElement('link');
         link.rel = rel;
         document.head.appendChild(link);
       }
+      // Always update href to ensure correct canonical
       link.href = href;
     };
 

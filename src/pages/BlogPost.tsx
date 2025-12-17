@@ -127,11 +127,16 @@ export default function BlogPostPage({ slug, onNavigate }: BlogPostProps) {
     ...getBlogSpecificSchemas(post.slug),
   ];
 
+  // Format title with site name
+  const pageTitle = post.meta_title || post.title;
+  const fullTitle = pageTitle.includes('|') ? pageTitle : `${pageTitle} | StrongerStride`;
+  const metaDescription = post.meta_description || post.excerpt || '';
+
   return (
     <>
       <MetaTags
-        title={post.meta_title || post.title}
-        description={post.meta_description || post.excerpt || ''}
+        title={fullTitle}
+        description={metaDescription}
         canonical={canonicalUrl}
         image={imageUrl}
         imageAlt={post.featured_image_alt || post.title}
