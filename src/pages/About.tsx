@@ -202,10 +202,10 @@ export default function About({ onNavigate }: AboutProps) {
         <section className="bg-slate-50 py-16">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 text-center">
-              As Featured In
+              Featured In & Professional Recognition
             </h2>
             <p className="text-lg text-slate-600 text-center mb-10 max-w-2xl mx-auto">
-              Dr. Agnew has been quoted as an expert source in leading running publications.
+              Dr. Spencer Agnew, DPT has been featured in Runner's World and other leading running and outdoor publications for his expertise in running biomechanics, strength training, and injury prevention.
             </p>
             <div className="bg-white rounded-xl shadow-md p-8 border border-slate-200">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start justify-items-center max-w-3xl mx-auto">
