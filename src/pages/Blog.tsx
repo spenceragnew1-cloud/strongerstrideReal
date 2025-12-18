@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
-import { supabase, BlogPost } from '../lib/supabase';
 import { ArrowRight, Calendar } from 'lucide-react';
 import MetaTags from '../components/MetaTags';
+import { getPublishedPosts, BlogPost } from '../data/blog-posts';
 
 type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
 
@@ -10,38 +9,8 @@ interface BlogProps {
 }
 
 export default function Blog({ onNavigate }: BlogProps) {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const loadPosts = async () => {
-      const { data, error } = await supabase
-        .from('blog_posts')
-        .select('*')
-        .eq('is_published', true)
-        .order('published_at', { ascending: false });
-
-      if (error) {
-        console.error('Error loading blog posts:', error);
-      } else {
-        setPosts(data || []);
-      }
-      setLoading(false);
-    };
-
-    loadPosts();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
-        <div className="text-center">
-          <div className="w-12 h-12 border-4 border-green-200 border-t-green-600 rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-slate-600">Loading blog posts...</p>
-        </div>
-      </div>
-    );
-  }
+  // Get posts from local data (no async needed)
+  const posts: BlogPost[] = getPublishedPosts();
 
   return (
     <>
@@ -112,7 +81,7 @@ export default function Blog({ onNavigate }: BlogProps) {
                       <p className="text-slate-600 mb-3">{post.excerpt}</p>
                       {post.seo_keywords && (
                         <div className="flex flex-wrap gap-2 mb-4">
-                          {post.seo_keywords.split(',').map((keyword, idx) => (
+                          {post.seo_keywords.split(',').slice(0, 4).map((keyword, idx) => (
                             <span
                               key={idx}
                               className="px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-medium"

@@ -1,81 +1,28 @@
-import { useEffect, useState } from 'react';
-import { supabase, BlogPost } from '../lib/supabase';
 import { ArrowLeft, Calendar, Clock, Share2, Facebook, Twitter, Linkedin, Mail } from 'lucide-react';
 import SchemaMarkup from '../components/SchemaMarkup';
 import MetaTags from '../components/MetaTags';
 import { generateArticleSchema, generateBreadcrumbSchema, getBlogSpecificSchemas } from '../lib/schema';
 import { trackAssessmentButtonClick } from '../lib/analytics';
+import { getPostBySlug, getRelatedPosts, BlogPost } from '../data/blog-posts';
 
 type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
 
 interface BlogPostProps {
   slug: string;
-  onNavigate: (page: Page) => void;
+  onNavigate: (page: Page, options?: { slug?: string }) => void;
 }
 
 export default function BlogPostPage({ slug, onNavigate }: BlogPostProps) {
-  const [post, setPost] = useState<BlogPost | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [notFound, setNotFound] = useState(false);
+  // Get post from local data (no async needed)
+  const post: BlogPost | undefined = getPostBySlug(slug);
+  const relatedPosts = getRelatedPosts(slug, 3);
 
   const handleAssessmentClick = () => {
     trackAssessmentButtonClick(`blog-post-${slug}`);
     onNavigate('assessment');
   };
 
-  useEffect(() => {
-    const loadPost = async () => {
-      const { data, error } = await supabase
-        .from('blog_posts')
-        .select('*')
-        .eq('slug', slug)
-        .eq('is_published', true)
-        .maybeSingle();
-
-      if (error) {
-        console.error('Error loading post:', error);
-        setNotFound(true);
-      } else if (!data) {
-        setNotFound(true);
-      } else {
-        setPost(data);
-      }
-      setLoading(false);
-    };
-
-    loadPost();
-  }, [slug]);
-
-  const shareUrl = `https://strongerstride.com/blog/${slug}`;
-
-  const handleShare = (platform: string) => {
-    const title = post?.title || '';
-    const text = post?.excerpt || '';
-
-    const urls = {
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
-      twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(title)}`,
-      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
-      email: `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(text + '\n\n' + shareUrl)}`
-    };
-
-    if (platform in urls) {
-      window.open(urls[platform as keyof typeof urls], '_blank', 'noopener,noreferrer');
-    }
-  };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
-        <div className="text-center">
-          <div className="w-12 h-12 border-4 border-green-200 border-t-green-600 rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-slate-600">Loading post...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (notFound) {
+  if (!post) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-slate-50">
         <div className="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
@@ -99,13 +46,28 @@ export default function BlogPostPage({ slug, onNavigate }: BlogPostProps) {
     );
   }
 
-  if (!post) return null;
-
   const authorName = post.author_name || post.author || 'StrongerStride Team';
   const publishedDate = post.published_at ? new Date(post.published_at) : null;
   const updatedDate = post.updated_at ? new Date(post.updated_at) : publishedDate;
   const canonicalUrl = `https://strongerstride.com/blog/${post.slug}`;
   const imageUrl = post.featured_image_url || 'https://strongerstride.com/logo.png';
+  const shareUrl = `https://strongerstride.com/blog/${slug}`;
+
+  const handleShare = (platform: string) => {
+    const title = post?.title || '';
+    const text = post?.excerpt || '';
+
+    const urls: Record<string, string> = {
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
+      twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(title)}`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
+      email: `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(text + '\n\n' + shareUrl)}`
+    };
+
+    if (platform in urls) {
+      window.open(urls[platform], '_blank', 'noopener,noreferrer');
+    }
+  };
 
   // Generate schemas
   const schemas = [
@@ -347,51 +309,24 @@ export default function BlogPostPage({ slug, onNavigate }: BlogPostProps) {
         <div className="mt-8 pt-8 border-t border-slate-200">
           <h3 className="text-xl font-bold text-slate-900 mb-4">Related Articles</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <a
-              href="/blog/hip-strength-running-performance"
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('blog-post', { slug: 'hip-strength-running-performance' });
-              }}
-              className="bg-white rounded-xl p-5 border border-slate-200 hover:shadow-md transition-shadow text-left group block"
-            >
-              <h4 className="font-bold text-slate-900 mb-2 group-hover:text-green-600 transition-colors text-sm">
-                Why Hip Strength Matters for Runners →
-              </h4>
-              <p className="text-slate-500 text-xs">
-                How weak hips affect your running and what to do about it.
-              </p>
-            </a>
-            <a
-              href="/blog/calf-strength-distance-runners"
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('blog-post', { slug: 'calf-strength-distance-runners' });
-              }}
-              className="bg-white rounded-xl p-5 border border-slate-200 hover:shadow-md transition-shadow text-left group block"
-            >
-              <h4 className="font-bold text-slate-900 mb-2 group-hover:text-green-600 transition-colors text-sm">
-                Calf Strength for Distance Runners →
-              </h4>
-              <p className="text-slate-500 text-xs">
-                Why your calves are the key to running economy.
-              </p>
-            </a>
-            <a
-              href="/blog/heavy-weights-vs-high-reps-for-runners"
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('blog-post', { slug: 'heavy-weights-vs-high-reps-for-runners' });
-              }}
-              className="bg-white rounded-xl p-5 border border-slate-200 hover:shadow-md transition-shadow text-left group block"
-            >
-              <h4 className="font-bold text-slate-900 mb-2 group-hover:text-green-600 transition-colors text-sm">
-                Heavy Weights vs High Reps →
-              </h4>
-              <p className="text-slate-500 text-xs">
-                What the research says about optimal strength training for runners.
-              </p>
-            </a>
+            {relatedPosts.map((relatedPost) => (
+              <a
+                key={relatedPost.id}
+                href={`/blog/${relatedPost.slug}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('blog-post', { slug: relatedPost.slug });
+                }}
+                className="bg-white rounded-xl p-5 border border-slate-200 hover:shadow-md transition-shadow text-left group block"
+              >
+                <h4 className="font-bold text-slate-900 mb-2 group-hover:text-green-600 transition-colors text-sm">
+                  {relatedPost.title.length > 60 ? relatedPost.title.substring(0, 60) + '...' : relatedPost.title} →
+                </h4>
+                <p className="text-slate-500 text-xs">
+                  {relatedPost.excerpt ? relatedPost.excerpt.substring(0, 80) + '...' : ''}
+                </p>
+              </a>
+            ))}
             <a
               href="/blog"
               onClick={(e) => {
