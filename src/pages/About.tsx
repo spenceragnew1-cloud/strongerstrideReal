@@ -205,21 +205,52 @@ export default function About({ onNavigate }: AboutProps) {
               As Featured In
             </h2>
             <p className="text-lg text-slate-600 text-center mb-10 max-w-2xl mx-auto">
-              StrongerStride's evidence-based approach has been recognized by leading running publications.
+              Dr. Agnew has been quoted as an expert source in leading running publications.
             </p>
             <div className="bg-white rounded-xl shadow-md p-8 border border-slate-200">
-              <div className="grid grid-cols-2 gap-8 items-center justify-items-center max-w-lg mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start justify-items-center max-w-3xl mx-auto">
                 <div className="text-center">
-                  <div className="h-12 flex items-center justify-center">
-                    <span className="text-xl font-bold text-slate-700">Runner's World</span>
+                  <div className="h-12 flex items-center justify-center mb-4">
+                    <span className="text-2xl font-bold text-red-600">Runner's World</span>
                   </div>
-                  <p className="text-sm text-slate-500 mt-2">Coming Soon</p>
+                  <ul className="space-y-2 text-left">
+                    <li>
+                      <a
+                        href="https://www.runnersworld.com/health-injuries/a60745708/tight-quads/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-slate-600 hover:text-green-600 text-sm underline"
+                      >
+                        How to Treat Tight Quads from Running
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.runnersworld.com/health-injuries/a68132145/exercises-for-weak-hips/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-slate-600 hover:text-green-600 text-sm underline"
+                      >
+                        Exercises for Weak Hips
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.runnersworld.com/health-injuries/a64783552/best-ql-stretches-for-runners/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-slate-600 hover:text-green-600 text-sm underline"
+                      >
+                        Best QL Stretches for Runners
+                      </a>
+                    </li>
+                  </ul>
                 </div>
                 <div className="text-center">
                   <div className="h-12 flex items-center justify-center">
-                    <span className="text-xl font-bold text-slate-700">Outside Magazine</span>
+                    <span className="text-2xl font-bold text-slate-400">Outside Magazine</span>
                   </div>
-                  <p className="text-sm text-slate-500 mt-2">Coming Soon</p>
+                  <p className="text-sm text-slate-500 mt-4">Coming Soon</p>
                 </div>
               </div>
             </div>
