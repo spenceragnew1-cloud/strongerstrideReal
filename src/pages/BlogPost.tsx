@@ -6,7 +6,7 @@ import MetaTags from '../components/MetaTags';
 import { generateArticleSchema, generateBreadcrumbSchema, getBlogSpecificSchemas } from '../lib/schema';
 import { trackAssessmentButtonClick } from '../lib/analytics';
 
-type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results';
+type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
 
 interface BlogPostProps {
   slug: string;
@@ -269,14 +269,28 @@ export default function BlogPostPage({ slug, onNavigate }: BlogPostProps) {
           <h3 className="text-xl font-bold text-slate-900 mb-3">About the Author</h3>
           <div className="bg-gradient-to-br from-green-50 to-slate-50 rounded-xl p-6">
             <p className="text-slate-700 leading-relaxed">
-              Dr. Spencer Agnew is a Doctor of Physical Therapy specializing in running biomechanics and performance. He has worked with over 500 runners as both a physical therapist and coach, and is the founder of{' '}
+              <button
+                onClick={() => onNavigate('about')}
+                className="text-green-600 hover:text-green-700 font-semibold underline"
+              >
+                Dr. Spencer Agnew
+              </button>
+              {' '}is a Doctor of Physical Therapy specializing in running biomechanics and performance. He has worked with over 500 runners as both a physical therapist and coach, and is the founder of{' '}
               <a 
-                href="https://ascentendurancegroup.com" 
+                href="https://ascentendurancegroup.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-green-600 hover:text-green-700 font-semibold underline"
               >
                 Ascent Endurance Group
               </a>
-              , where he helps runners build durable strength and long-term consistency.
+              , where he helps runners build durable strength and long-term consistency.{' '}
+              <button
+                onClick={() => onNavigate('about')}
+                className="text-green-600 hover:text-green-700 font-semibold underline"
+              >
+                Learn more about Dr. Agnew →
+              </button>
             </p>
           </div>
         </div>

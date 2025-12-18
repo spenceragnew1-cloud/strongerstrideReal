@@ -5,7 +5,7 @@ import { AlertCircle } from 'lucide-react';
 import { trackProgramClick, trackAssessmentButtonClick } from '../lib/analytics';
 import MetaTags from '../components/MetaTags';
 
-type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results';
+type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
 
 interface ProgramsProps {
   onNavigate: (page: Page) => void;

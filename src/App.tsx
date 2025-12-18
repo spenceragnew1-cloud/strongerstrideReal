@@ -7,8 +7,9 @@ import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import AssessmentResults from './pages/AssessmentResults';
 import Admin from './pages/Admin';
+import About from './pages/About';
 
-type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'admin';
+type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'admin' | 'about';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -37,6 +38,8 @@ function App() {
       if (aId) setAssessmentId(aId);
     } else if (path === '/admin') {
       setCurrentPage('admin');
+    } else if (path === '/about') {
+      setCurrentPage('about');
     }
 
     window.scrollTo(0, 0);
@@ -65,6 +68,7 @@ function App() {
     else if (page === 'blog-post' && options?.slug) url = `/blog/${options.slug}`;
     else if (page === 'results' && options?.assessmentId) url = `/results?assessment_id=${options.assessmentId}`;
     else if (page === 'admin') url = '/admin';
+    else if (page === 'about') url = '/about';
 
     window.history.pushState({}, '', url);
 
@@ -86,6 +90,7 @@ function App() {
         {currentPage === 'blog-post' && <BlogPost slug={selectedBlogSlug} onNavigate={handleNavigate} />}
         {currentPage === 'results' && assessmentId && <AssessmentResults assessmentId={assessmentId} onNavigate={handleNavigate} />}
         {currentPage === 'admin' && <Admin onNavigate={handleNavigate} />}
+        {currentPage === 'about' && <About onNavigate={handleNavigate} />}
       </main>
     </div>
   );

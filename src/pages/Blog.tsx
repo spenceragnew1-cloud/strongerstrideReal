@@ -3,7 +3,7 @@ import { supabase, BlogPost } from '../lib/supabase';
 import { ArrowRight, Calendar } from 'lucide-react';
 import MetaTags from '../components/MetaTags';
 
-type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results';
+type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
 
 interface BlogProps {
   onNavigate: (page: Page, options?: { slug?: string }) => void;

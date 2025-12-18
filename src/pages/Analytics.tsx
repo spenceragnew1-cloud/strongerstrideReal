@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
 import { BarChart3, Users, MousePointerClick, ArrowLeft } from 'lucide-react';
 
-type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results';
+type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
 
 interface AnalyticsProps {
   onNavigate: (page: Page) => void;

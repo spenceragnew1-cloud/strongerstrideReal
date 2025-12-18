@@ -5,7 +5,7 @@ import ProgramCard from '../components/ProgramCard';
 import DeficitsSummary from '../components/DeficitsSummary';
 import { ArrowRight, AlertCircle, CheckCircle, Mail } from 'lucide-react';
 
-type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results';
+type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
 
 interface AssessmentResultsProps {
   assessmentId: string;

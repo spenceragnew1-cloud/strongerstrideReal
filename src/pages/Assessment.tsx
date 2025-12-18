@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react';
 import { trackAssessmentStarted } from '../lib/analytics';
 import MetaTags from '../components/MetaTags';
 
-type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results';
+type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
 
 interface AssessmentPageProps {
   onNavigate: (page: Page, options?: { assessmentId?: string }) => void;

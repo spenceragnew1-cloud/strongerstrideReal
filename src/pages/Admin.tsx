@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
 import { ArrowLeft, TrendingUp, Users, CheckCircle, Activity, MousePointerClick, BarChart3 } from 'lucide-react';
 
-type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'admin';
+type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'admin' | 'about';
 
 interface AdminProps {
   onNavigate: (page: Page) => void;

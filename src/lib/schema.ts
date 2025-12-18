@@ -134,7 +134,25 @@ export function generatePersonSchema() {
     description: 'Dr. Spencer Agnew is a Doctor of Physical Therapy specializing in running biomechanics and performance. He has worked with over 500 runners as both a physical therapist and coach, helping them overcome injuries and achieve their performance goals.',
     url: `${SITE_URL}/about`,
     sameAs: [
-      // Add social media profiles here when available
+      'https://ascentendurancegroup.com',
+      // Add social media profiles here when available (LinkedIn, Instagram, etc.)
+    ],
+    worksFor: {
+      '@type': 'Organization',
+      name: 'StrongerStride',
+      url: SITE_URL,
+    },
+    affiliation: {
+      '@type': 'Organization',
+      name: 'Ascent Endurance Group',
+      url: 'https://ascentendurancegroup.com',
+    },
+    knowsAbout: [
+      'Running Biomechanics',
+      'Physical Therapy',
+      'Strength Training for Runners',
+      'Injury Prevention',
+      'Sports Rehabilitation',
     ],
   };
 }

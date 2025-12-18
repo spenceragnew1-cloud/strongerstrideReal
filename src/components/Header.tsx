@@ -1,4 +1,4 @@
-type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results';
+type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
 
 interface HeaderProps {
   onNavigate: (page: Page) => void;
@@ -54,6 +54,17 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
               }`}
             >
               Blog
+            </button>
+
+            <button
+              onClick={() => onNavigate('about')}
+              className={`text-sm font-medium transition-colors ${
+                currentPage === 'about'
+                  ? 'text-green-500'
+                  : 'text-slate-700 hover:text-green-500'
+              }`}
+            >
+              About
             </button>
           </nav>
         </div>

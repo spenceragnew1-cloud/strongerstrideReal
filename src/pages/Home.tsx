@@ -2,7 +2,7 @@ import { ArrowRight, Target, Award, User, BookOpen, TrendingUp } from 'lucide-re
 import { trackAssessmentButtonClick } from '../lib/analytics';
 import MetaTags from '../components/MetaTags';
 
-type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results';
+type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
 
 interface HomeProps {
   onNavigate: (page: Page) => void;

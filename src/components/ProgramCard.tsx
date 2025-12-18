@@ -1,7 +1,7 @@
 import { ArrowRight, Clock, Zap } from 'lucide-react';
 import { Program } from '../lib/supabase';
 
-type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results';
+type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
 
 interface ProgramCardProps {
   program: Program;
