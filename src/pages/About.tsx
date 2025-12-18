@@ -208,8 +208,7 @@ export default function About({ onNavigate }: AboutProps) {
               StrongerStride's evidence-based approach has been recognized by leading running publications.
             </p>
             <div className="bg-white rounded-xl shadow-md p-8 border border-slate-200">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
-                {/* Placeholder logos - replace with actual publication logos/links */}
+              <div className="grid grid-cols-2 gap-8 items-center justify-items-center max-w-lg mx-auto">
                 <div className="text-center">
                   <div className="h-12 flex items-center justify-center">
                     <span className="text-xl font-bold text-slate-700">Runner's World</span>
@@ -218,19 +217,7 @@ export default function About({ onNavigate }: AboutProps) {
                 </div>
                 <div className="text-center">
                   <div className="h-12 flex items-center justify-center">
-                    <span className="text-xl font-bold text-slate-400">Trail Runner</span>
-                  </div>
-                  <p className="text-sm text-slate-500 mt-2">Coming Soon</p>
-                </div>
-                <div className="text-center">
-                  <div className="h-12 flex items-center justify-center">
-                    <span className="text-xl font-bold text-slate-400">Podium Runner</span>
-                  </div>
-                  <p className="text-sm text-slate-500 mt-2">Coming Soon</p>
-                </div>
-                <div className="text-center">
-                  <div className="h-12 flex items-center justify-center">
-                    <span className="text-xl font-bold text-slate-400">Running Magazine</span>
+                    <span className="text-xl font-bold text-slate-700">Outside Magazine</span>
                   </div>
                   <p className="text-sm text-slate-500 mt-2">Coming Soon</p>
                 </div>
