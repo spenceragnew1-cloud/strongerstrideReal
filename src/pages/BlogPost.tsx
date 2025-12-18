@@ -268,28 +268,36 @@ export default function BlogPostPage({ slug, onNavigate }: BlogPostProps) {
         <div className="mt-12 pt-8 border-t border-slate-200">
           <h3 className="text-xl font-bold text-slate-900 mb-4">Take Your Next Step</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <button
-              onClick={handleAssessmentClick}
-              className="bg-gradient-to-br from-green-50 to-slate-50 rounded-xl p-5 border border-slate-200 hover:shadow-md transition-shadow text-left group"
+            <a
+              href="/assessment"
+              onClick={(e) => {
+                e.preventDefault();
+                handleAssessmentClick();
+              }}
+              className="bg-gradient-to-br from-green-50 to-slate-50 rounded-xl p-5 border border-slate-200 hover:shadow-md transition-shadow text-left group block"
             >
               <h4 className="font-bold text-slate-900 mb-2 group-hover:text-green-600 transition-colors">
-                Free Strength Assessment →
+                Free Runner Strength Assessment →
               </h4>
               <p className="text-slate-600 text-sm">
                 Identify your specific weaknesses in 10 minutes and get personalized recommendations.
               </p>
-            </button>
-            <button
-              onClick={() => onNavigate('programs')}
-              className="bg-gradient-to-br from-green-50 to-slate-50 rounded-xl p-5 border border-slate-200 hover:shadow-md transition-shadow text-left group"
+            </a>
+            <a
+              href="/programs"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('programs');
+              }}
+              className="bg-gradient-to-br from-green-50 to-slate-50 rounded-xl p-5 border border-slate-200 hover:shadow-md transition-shadow text-left group block"
             >
               <h4 className="font-bold text-slate-900 mb-2 group-hover:text-green-600 transition-colors">
-                View Training Programs →
+                Strength Programs for Runners →
               </h4>
               <p className="text-slate-600 text-sm">
                 Evidence-based 12-week strength programs designed specifically for runners.
               </p>
-            </button>
+            </a>
           </div>
         </div>
 
@@ -339,9 +347,13 @@ export default function BlogPostPage({ slug, onNavigate }: BlogPostProps) {
         <div className="mt-8 pt-8 border-t border-slate-200">
           <h3 className="text-xl font-bold text-slate-900 mb-4">Related Articles</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <button
-              onClick={() => onNavigate('blog-post', { slug: 'hip-strength-running-performance' })}
-              className="bg-white rounded-xl p-5 border border-slate-200 hover:shadow-md transition-shadow text-left group"
+            <a
+              href="/blog/hip-strength-running-performance"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('blog-post', { slug: 'hip-strength-running-performance' });
+              }}
+              className="bg-white rounded-xl p-5 border border-slate-200 hover:shadow-md transition-shadow text-left group block"
             >
               <h4 className="font-bold text-slate-900 mb-2 group-hover:text-green-600 transition-colors text-sm">
                 Why Hip Strength Matters for Runners →
@@ -349,10 +361,14 @@ export default function BlogPostPage({ slug, onNavigate }: BlogPostProps) {
               <p className="text-slate-500 text-xs">
                 How weak hips affect your running and what to do about it.
               </p>
-            </button>
-            <button
-              onClick={() => onNavigate('blog-post', { slug: 'calf-strength-distance-runners' })}
-              className="bg-white rounded-xl p-5 border border-slate-200 hover:shadow-md transition-shadow text-left group"
+            </a>
+            <a
+              href="/blog/calf-strength-distance-runners"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('blog-post', { slug: 'calf-strength-distance-runners' });
+              }}
+              className="bg-white rounded-xl p-5 border border-slate-200 hover:shadow-md transition-shadow text-left group block"
             >
               <h4 className="font-bold text-slate-900 mb-2 group-hover:text-green-600 transition-colors text-sm">
                 Calf Strength for Distance Runners →
@@ -360,10 +376,14 @@ export default function BlogPostPage({ slug, onNavigate }: BlogPostProps) {
               <p className="text-slate-500 text-xs">
                 Why your calves are the key to running economy.
               </p>
-            </button>
-            <button
-              onClick={() => onNavigate('blog-post', { slug: 'heavy-weights-vs-high-reps-for-runners' })}
-              className="bg-white rounded-xl p-5 border border-slate-200 hover:shadow-md transition-shadow text-left group"
+            </a>
+            <a
+              href="/blog/heavy-weights-vs-high-reps-for-runners"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('blog-post', { slug: 'heavy-weights-vs-high-reps-for-runners' });
+              }}
+              className="bg-white rounded-xl p-5 border border-slate-200 hover:shadow-md transition-shadow text-left group block"
             >
               <h4 className="font-bold text-slate-900 mb-2 group-hover:text-green-600 transition-colors text-sm">
                 Heavy Weights vs High Reps →
@@ -371,10 +391,14 @@ export default function BlogPostPage({ slug, onNavigate }: BlogPostProps) {
               <p className="text-slate-500 text-xs">
                 What the research says about optimal strength training for runners.
               </p>
-            </button>
-            <button
-              onClick={() => onNavigate('blog')}
-              className="bg-white rounded-xl p-5 border border-slate-200 hover:shadow-md transition-shadow text-left group"
+            </a>
+            <a
+              href="/blog"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('blog');
+              }}
+              className="bg-white rounded-xl p-5 border border-slate-200 hover:shadow-md transition-shadow text-left group block"
             >
               <h4 className="font-bold text-slate-900 mb-2 group-hover:text-green-600 transition-colors text-sm">
                 View All Articles →
@@ -382,7 +406,7 @@ export default function BlogPostPage({ slug, onNavigate }: BlogPostProps) {
               <p className="text-slate-500 text-xs">
                 Browse our complete library of evidence-based running content.
               </p>
-            </button>
+            </a>
           </div>
         </div>
 
@@ -391,13 +415,28 @@ export default function BlogPostPage({ slug, onNavigate }: BlogPostProps) {
           <h3 className="text-xl font-bold text-slate-900 mb-3">About the Author</h3>
           <div className="bg-gradient-to-br from-green-50 to-slate-50 rounded-xl p-6">
             <p className="text-slate-700 leading-relaxed">
-              <button
-                onClick={() => onNavigate('about')}
+              <a
+                href="/about"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('about');
+                }}
                 className="text-green-600 hover:text-green-700 font-semibold underline"
               >
-                Dr. Spencer Agnew
-              </button>
-              {' '}is a Doctor of Physical Therapy specializing in running biomechanics and performance. He has worked with over 500 runners as both a physical therapist and coach, and is the founder of{' '}
+                Dr. Spencer Agnew, DPT
+              </a>
+              {' '}is a Doctor of Physical Therapy specializing in running biomechanics and performance. He is the creator of{' '}
+              <a
+                href="/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('home');
+                }}
+                className="text-green-600 hover:text-green-700 font-semibold underline"
+              >
+                Stronger Stride
+              </a>
+              {' '}and founder of{' '}
               <a 
                 href="https://ascentendurancegroup.com"
                 target="_blank"
@@ -406,13 +445,7 @@ export default function BlogPostPage({ slug, onNavigate }: BlogPostProps) {
               >
                 Ascent Endurance Group
               </a>
-              , where he helps runners build durable strength and long-term consistency.{' '}
-              <button
-                onClick={() => onNavigate('about')}
-                className="text-green-600 hover:text-green-700 font-semibold underline"
-              >
-                Learn more about Dr. Agnew →
-              </button>
+              .
             </p>
           </div>
         </div>
