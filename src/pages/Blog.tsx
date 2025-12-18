@@ -81,7 +81,14 @@ export default function Blog({ onNavigate }: BlogProps) {
                 key={post.id}
                 className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all overflow-hidden border border-slate-200"
               >
-                <div className="flex flex-col md:flex-row">
+                <a
+                  href={`/blog/${post.slug}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('blog-post', { slug: post.slug });
+                  }}
+                  className="flex flex-col md:flex-row"
+                >
                   {post.featured_image_url && (
                     <img
                       src={post.featured_image_url}
@@ -116,14 +123,11 @@ export default function Blog({ onNavigate }: BlogProps) {
                         </div>
                       )}
                     </div>
-                    <button
-                      onClick={() => onNavigate('blog-post', { slug: post.slug })}
-                      className="inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-700 transition-colors w-fit"
-                    >
+                    <span className="inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-700 transition-colors w-fit">
                       Read More <ArrowRight className="w-4 h-4" />
-                    </button>
+                    </span>
                   </div>
-                </div>
+                </a>
               </article>
             ))}
           </div>
