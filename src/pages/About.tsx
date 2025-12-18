@@ -17,8 +17,8 @@ export default function About({ onNavigate }: AboutProps) {
   return (
     <>
       <MetaTags
-        title="About Dr. Spencer Agnew, DPT | StrongerStride"
-        description="Dr. Spencer Agnew is a Doctor of Physical Therapy and running coach who has helped athletes from 400m to ultra marathons since 2014. Learn about his evidence-based approach to helping runners build durable strength."
+        title="About Dr. Spencer Agnew | StrongerStride"
+        description="Doctor of Physical Therapy specializing in running biomechanics and performance. Evidence-based training, injury resilience, and runner movement assessments."
         canonical="https://strongerstride.com/about"
         type="website"
       />

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Assessment from './pages/Assessment';
 import Programs from './pages/Programs';
@@ -92,6 +93,7 @@ function App() {
         {currentPage === 'admin' && <Admin onNavigate={handleNavigate} />}
         {currentPage === 'about' && <About onNavigate={handleNavigate} />}
       </main>
+      <Footer onNavigate={handleNavigate} />
     </div>
   );
 }
