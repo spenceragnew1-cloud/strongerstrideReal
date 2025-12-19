@@ -1,6 +1,7 @@
 import { ArrowRight, Award, BookOpen, Users, MapPin, GraduationCap, Heart, Timer } from 'lucide-react';
 import { trackAssessmentButtonClick } from '../lib/analytics';
 import MetaTags from '../components/MetaTags';
+import AsFeaturedIn from '../components/AsFeaturedIn';
 
 type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
 
@@ -34,6 +35,9 @@ export default function About({ onNavigate }: AboutProps) {
             </p>
           </div>
         </section>
+
+        {/* AS FEATURED IN */}
+        <AsFeaturedIn />
 
         {/* ORIGIN STORY */}
         <section className="bg-slate-50 py-16">

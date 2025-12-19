@@ -12,7 +12,7 @@ export const strideLengthPost: BlogPost = {
   published_at: '2025-01-15T00:00:00Z',
   reading_time: '18 min read',
   meta_title: 'Stride Length vs Frequency: What Runners Need to Know',
-  meta_description: "Research reveals distance runners rely on ankle strength for stride length, not hip muscles like sprinters. Learn which muscles power YOUR race pace, why the 7 m/s threshold matters, and how to train the right muscles for maximum performance.",
+  meta_description: 'Focusing on cadence won\'t make you faster — weak ankles limit your stride length. Learn which muscle powers distance running and how to train it.',
   seo_keywords: 'stride length vs stride frequency, running cadence, ankle plantarflexors, distance running performance, soleus muscle, running biomechanics',
   featured_image_url: null,
   featured_image_alt: null,
@@ -128,7 +128,7 @@ export const strideLengthPost: BlogPost = {
 
 <p>The research points to specific training priorities:</p>
 
-<p><strong>Prioritize ankle plantarflexor (calf) strength.</strong> At distance running speeds below 7 m/s, your calves are the primary performance drivers. Stronger calves mean you can push harder against the ground with each stride, generating greater vertical support forces, increasing stride length, and running faster. This is a STRENGTH issue, not an endurance issue.</p>
+<p><strong>Prioritize ankle plantarflexor (calf) strength.</strong> At distance running speeds below 7 m/s, your calves are the primary performance drivers. Stronger calves mean you can push harder against the ground with each stride, generating greater vertical support forces, increasing stride length, and running faster. This is a STRENGTH issue, not an endurance issue. For a complete guide on building race-winning calf strength, see our detailed article on <a href="/blog/calf-strength-distance-runners">why calf strength matters for distance runners</a>.</p>
 
 <p><strong>Don't obsess over cadence.</strong> Many runners fixate on hitting 180 steps per minute, but research shows that at distance paces, stride length increases contribute more to faster speeds than cadence increases. Focus on building the strength that allows you to push harder with each step, naturally increasing stride length.</p>
 
@@ -208,4 +208,5 @@ Stand with minimal knee bend. Hop continuously using only your ankles—knees st
 <p><strong>About the Author</strong><br>
 Dr. Spencer Agnew is a Doctor of Physical Therapy specializing in running biomechanics and injury prevention. He has worked with over 500 runners as both a physical therapist and run coach, helping them overcome injuries and improve performance through evidence-based strength training and movement analysis.</p>`
 };
+
 

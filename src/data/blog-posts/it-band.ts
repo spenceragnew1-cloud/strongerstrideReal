@@ -12,7 +12,7 @@ export const itBandPost: BlogPost = {
   published_at: '2024-11-05T00:00:00Z',
   reading_time: '12 min read',
   meta_title: 'IT Band Syndrome: Why Hip Strength is the Real Solution | StrongerStride',
-  meta_description: 'Discover why IT band syndrome is caused by weak hips, not a tight IT band. Research shows 92% recovery with hip strengthening. Learn the 5 best exercises and recovery protocol to fix IT band pain permanently.',
+  meta_description: 'Foam rolling your IT band won\'t fix the pain — weak hips are the real culprit. Discover the 6-week protocol with a 92% recovery rate.',
   seo_keywords: 'IT band syndrome, ITBS, iliotibial band syndrome, runner knee pain, hip strength, IT band exercises, running injuries, knee pain running, IT band treatment, hip abductor weakness',
   featured_image_url: null,
   featured_image_alt: null,
@@ -289,4 +289,5 @@ export const itBandPost: BlogPost = {
 <p><strong>About the Author</strong><br>
 Dr. Spencer Agnew is a Doctor of Physical Therapy specializing in running biomechanics and injury prevention. He has worked with over 500 runners as both a physical therapist and run coach, helping them overcome injuries and improve performance. Spencer has presented evidence-based research on strength training for runners at professional conferences and is passionate about translating research into practical, actionable advice for runners.</p>`
 };
+
 

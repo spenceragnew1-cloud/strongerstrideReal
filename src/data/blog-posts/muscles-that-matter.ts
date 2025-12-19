@@ -1,0 +1,138 @@
+import { BlogPost } from './types';
+
+export const musclesThatMatterPost: BlogPost = {
+  id: 'muscles-that-matter-001',
+  title: 'What Muscles Matter Most for Distance Running?',
+  slug: 'muscles-that-matter-for-distance-running',
+  excerpt: 'Learn which muscles truly drive distance running performance, based on biomechanics research and real-world coaching experience.',
+  author: 'Dr. Spencer Agnew, DPT',
+  author_name: 'Dr. Spencer Agnew, DPT',
+  author_bio: 'Dr. Spencer Agnew is a Doctor of Physical Therapy specializing in running biomechanics and injury prevention.',
+  is_published: true,
+  published_at: '2025-01-20T00:00:00Z',
+  reading_time: '12 min read',
+  meta_title: 'What Muscles Matter Most for Distance Running?',
+  meta_description: 'Learn which muscles truly drive distance running performance, based on biomechanics research and real-world coaching experience.',
+  seo_keywords: 'distance running muscles, running biomechanics, calf strength running, hip strength running, running performance, muscle groups for runners',
+  featured_image_url: null,
+  featured_image_alt: null,
+  updated_at: '2025-01-20T00:00:00Z',
+  content: `<p>Distance running is often simplified to "strong legs" or "good cardio," but research and real-world coaching experience tell a more precise story. Running performance and durability depend on how specific muscle groups work together to generate force, absorb impact, and maintain efficient mechanics over thousands of steps.</p>
+
+<p>Let's break down the muscles that matter most—and why.</p>
+
+<h2>The Calves: The Primary Drivers of Distance Running</h2>
+
+<p>The calf muscles—specifically the soleus and gastrocnemius—are the most important muscles for distance running performance.</p>
+
+<p>Research consistently shows that the calves contribute the largest proportion of propulsive force during running, especially at steady-state and threshold speeds. The soleus, in particular, plays a critical role in:</p>
+
+<ul>
+<li>Generating vertical support forces</li>
+<li>Storing and releasing elastic energy</li>
+<li>Delaying fatigue during long runs</li>
+</ul>
+
+<p>Studies using musculoskeletal modeling have shown that the soleus alone can account for more than 50% of the energy needed to support body weight while running.</p>
+
+<p>This is why runners with weak or under-trained calves often struggle with:</p>
+
+<ul>
+<li>Late-race fatigue</li>
+<li>Loss of running economy</li>
+<li>Recurring lower-leg injuries (Achilles, calf strains, plantar fascia)</li>
+</ul>
+
+<p>For a deeper dive into why calf strength is critical for distance running, read our complete guide: <a href="/blog/calf-strength-distance-runners">Why Calf Strength Matters More Than You Think for Distance Runners</a>.</p>
+
+<h2>The Hips: Force Transfer and Injury Prevention</h2>
+
+<p>While the calves drive propulsion, the hip muscles—particularly the gluteus maximus and gluteus medius—act as force transmitters and stabilizers.</p>
+
+<p>Strong hips help:</p>
+
+<ul>
+<li>Control pelvic motion</li>
+<li>Prevent energy leaks during stance</li>
+<li>Reduce compensatory stress on the calves and knees</li>
+</ul>
+
+<p>Research links hip weakness to increased risk of common running injuries such as IT band syndrome, patellofemoral pain, and Achilles tendinopathy.</p>
+
+<p>In practice, runners with insufficient hip strength often overload their calves, creating a performance ceiling even if aerobic fitness is high.</p>
+
+<p>To understand how hip strength prevents injuries and improves performance, see our detailed article: <a href="/blog/hip-strength-running-performance">Why Hip Strength Matters for Running Performance</a>.</p>
+
+<h2>The Hamstrings: Speed Control and Elastic Assistance</h2>
+
+<p>The hamstrings assist with:</p>
+
+<ul>
+<li>Hip extension during push-off</li>
+<li>Controlling forward leg swing</li>
+<li>Absorbing forces during late swing phase</li>
+</ul>
+
+<p>While they contribute less to propulsion than the calves, hamstrings play a key role in stride efficiency, especially as speed increases or fatigue sets in.</p>
+
+<p>Poor hamstring strength or coordination often shows up as:</p>
+
+<ul>
+<li>Overstriding</li>
+<li>Reduced stride frequency</li>
+<li>Increased injury risk during speed work</li>
+</ul>
+
+<h2>The Quads: Shock Absorption, Not Power</h2>
+
+<p>Contrary to popular belief, the quadriceps are not the main drivers of distance running propulsion.</p>
+
+<p>Their primary role is:</p>
+
+<ul>
+<li>Absorbing impact during landing</li>
+<li>Controlling knee flexion in early stance</li>
+</ul>
+
+<p>Over-reliance on the quads often indicates deficits elsewhere in the system, particularly the calves or hips.</p>
+
+<p>This explains why quad-dominant runners often feel strong early but fade quickly late in races.</p>
+
+<h2>The Core: Stability Over Strength</h2>
+
+<p>The core's job in running is not brute strength—it's force transmission.</p>
+
+<p>A stable trunk allows force generated by the calves and hips to move efficiently through the body. Core deficits often show up as:</p>
+
+<ul>
+<li>Excessive torso rotation</li>
+<li>Loss of posture late in runs</li>
+<li>Reduced running economy</li>
+</ul>
+
+<h2>What This Means for Runners</h2>
+
+<p>Distance running performance is not about training everything equally—it's about prioritizing the muscles that do the most work.</p>
+
+<p>Key takeaway:</p>
+
+<ul>
+<li>Calves = primary engine</li>
+<li>Hips = force transfer and injury protection</li>
+<li>Hamstrings = stride efficiency</li>
+<li>Quads = shock absorption</li>
+<li>Core = stability</li>
+</ul>
+
+<p>This hierarchy should guide strength training decisions—not trends or bodybuilding logic.</p>
+
+<h2>Want to Know Which Muscles YOU Need to Improve?</h2>
+
+<p><a href="/assessment">Take the free runner strength assessment</a> to identify your specific strength limitations and get targeted recommendations in under 10 minutes.</p>
+
+<hr>
+
+<p><strong>About the Author</strong><br>
+Dr. Spencer Agnew is a Doctor of Physical Therapy specializing in running biomechanics and performance. He has worked with over 500 runners and is the founder of <a href="https://ascentendurancegroup.com" target="_blank" rel="noopener noreferrer">Ascent Endurance Group</a>.</p>`
+};
+

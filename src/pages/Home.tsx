@@ -1,6 +1,7 @@
 import { ArrowRight, Target, Award, User, BookOpen, TrendingUp } from 'lucide-react';
 import { trackAssessmentButtonClick } from '../lib/analytics';
 import MetaTags from '../components/MetaTags';
+import AsFeaturedIn from '../components/AsFeaturedIn';
 
 type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
 
@@ -43,6 +44,9 @@ export default function Home({ onNavigate }: HomeProps) {
           </p>
         </div>
       </section>
+
+      {/* AS FEATURED IN */}
+      <AsFeaturedIn />
 
       {/* SECTION 2 - VALUE PROPS */}
       <section className="bg-slate-50 py-20">

@@ -12,7 +12,7 @@ export const heavyWeightsPost: BlogPost = {
   published_at: '2025-01-15T00:00:00Z',
   reading_time: '20 min read',
   meta_title: 'Heavy Weights vs High Reps for Runners (Backed by Research)',
-  meta_description: "Research shows heavy resistance training improves running economy by 2-8% while high-rep training shows zero performance benefit. Learn why runners should lift heavy weights (80-90% 1-RM, 3-6 reps) and stop wasting time on bodyweight circuits.",
+  meta_description: 'High-rep bodyweight circuits waste your time — research shows zero performance benefit. Learn why heavy weights (80-90% 1-RM) improve running economy by 2-8%.',
   seo_keywords: 'heavy weights for runners, running strength training, running economy, high reps vs low reps, strength training research, resistance training runners',
   featured_image_url: null,
   featured_image_alt: null,
@@ -150,7 +150,7 @@ export const heavyWeightsPost: BlogPost = {
 
 <p><strong>Lift heavy weights with low reps.</strong> "Heavy" means 80-90% of your 1-rep max, which typically allows 3-6 reps per set before technical failure. This isn't "lift until you can't move"—it's "lift a challenging weight with excellent form for low reps."</p>
 
-<p><strong>Focus on compound movements.</strong> Squats, deadlifts, Bulgarian split squats, and weighted calf raises provide the biggest return. These movements train multiple joints and muscle groups in patterns that transfer directly to running mechanics.</p>
+<p><strong>Focus on compound movements.</strong> Squats, deadlifts, Bulgarian split squats, and weighted calf raises provide the biggest return. These movements train multiple joints and muscle groups in patterns that transfer directly to running mechanics. For runners dealing with injuries, <a href="/blog/hip-strength-running-performance">hip strengthening exercises</a> should be a priority, as weak hips are the root cause of most common running injuries.</p>
 
 <p><strong>Rest adequately between sets.</strong> Take 2-3 minutes between heavy sets. This isn't circuit training. The goal is maximum force production, which requires full neural recovery between efforts.</p>
 
@@ -178,7 +178,7 @@ export const heavyWeightsPost: BlogPost = {
 
 <p><strong>Mechanism 1: Neural Adaptations</strong></p>
 
-<p>Heavy loads force your nervous system to recruit more motor units and fire them at higher rates. This neural adaptation allows you to generate more force more quickly—exactly what you need during the stance phase of running (generating 2-3 times your body weight in ground reaction forces with each step).</p>
+<p>Heavy loads force your nervous system to recruit more motor units and fire them at higher rates. This neural adaptation allows you to generate more force more quickly—exactly what you need during the stance phase of running (generating 2-3 times your body weight in ground reaction forces with each step). This improved force production directly translates to better <a href="/blog/stride-length-vs-stride-frequency-distance-runners">stride length at distance running speeds</a>, where ankle strength is the primary performance driver.</p>
 
 <p>High-rep training doesn't create these neural adaptations because the load isn't heavy enough to require maximum motor unit recruitment. You're training endurance pathways, not force production.</p>
 
@@ -272,4 +272,5 @@ export const heavyWeightsPost: BlogPost = {
 <p><strong>About the Author</strong><br>
 Dr. Spencer Agnew is a Doctor of Physical Therapy specializing in running biomechanics and injury prevention. He has worked with over 500 runners as both a physical therapist and run coach, helping them overcome injuries and improve performance through evidence-based strength training and movement analysis.</p>`
 };
+
 

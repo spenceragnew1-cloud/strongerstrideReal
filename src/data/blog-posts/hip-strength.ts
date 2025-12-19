@@ -12,7 +12,7 @@ export const hipStrengthPost: BlogPost = {
   published_at: '2024-11-05T00:00:00Z',
   reading_time: '15 min read',
   meta_title: 'Hip Strength for Runners: Why It Matters (Science-Backed)',
-  meta_description: 'Discover why hip strength is crucial for injury prevention and running performance. Research-backed guide with 5 best exercises, training programs, and recovery protocols.',
+  meta_description: 'Most runners ignore hip strength — until IT band pain or knee injuries strike. Learn the science-backed exercises that reduce injury risk by 66%.',
   seo_keywords: 'hip strength running, running injuries, hip exercises for runners, glute strength, IT band prevention, runner knee pain, hip abductor exercises, running performance',
   featured_image_url: null,
   featured_image_alt: null,
@@ -38,7 +38,7 @@ export const hipStrengthPost: BlogPost = {
 
 <p>Research published in the <em>British Journal of Sports Medicine</em> found that <strong>strength training reduces sports injury risk by 66%</strong>, and a significant portion of that protective effect comes from hip strengthening.¹</p>
 
-<p>But here's what's interesting: most runners don't have weak legs. Their quads and calves are often quite strong from running itself. It's the hip muscles—particularly the glute medius, glute max, and hip external rotators—that tend to be underdeveloped.</p>
+<p>But here's what's interesting: most runners don't have weak legs. Their quads and calves are often quite strong from running itself. It's the hip muscles—particularly the glute medius, glute max, and hip external rotators—that tend to be underdeveloped. That said, while hip strength is foundational for injury prevention, <a href="/blog/calf-strength-distance-runners">calf strength is actually the primary driver of distance running performance</a> at race paces, so both muscle groups need attention.</p>
 
 <h2>How Weak Hips Lead to Running Injuries</h2>
 
@@ -118,7 +118,7 @@ export const hipStrengthPost: BlogPost = {
 <li>Maintaining better form when fatigued</li>
 </ul>
 
-<p>A study in the <em>Journal of Strength and Conditioning Research</em> found that 6 weeks of hip strengthening improved running economy by 8% in distance runners.⁸</p>
+<p>A study in the <em>Journal of Strength and Conditioning Research</em> found that 6 weeks of hip strengthening improved running economy by 8% in distance runners.⁸ For runners looking to maximize these performance gains, <a href="/blog/heavy-weights-vs-high-reps-for-runners">heavy resistance training with low reps</a> has been shown to improve running economy by 2-8% while high-rep training shows zero benefit.</p>
 
 <h3>Power Output</h3>
 
@@ -346,4 +346,5 @@ export const hipStrengthPost: BlogPost = {
 <p><strong>About the Author</strong><br>
 Dr. Spencer Agnew is a Doctor of Physical Therapy specializing in running biomechanics and injury prevention. He has worked with over 500 runners as both a physical therapist and run coach, helping them overcome injuries and improve performance. Spencer has presented evidence-based research on strength training for runners at professional conferences and is passionate about translating research into practical, actionable advice for runners.</p>`
 };
+
 

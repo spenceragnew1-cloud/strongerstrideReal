@@ -12,7 +12,7 @@ export const calfStrengthPost: BlogPost = {
   published_at: '2025-01-15T00:00:00Z',
   reading_time: '16 min read',
   meta_title: 'Calf Strength for Distance Runners (Research Explained)',
-  meta_description: "Research shows calf muscles are the primary drivers of distance running performance up to 4:17/mile pace. Learn why your calves matter more than your quads, what tests reveal about your weakness, and the 5 exercises that build race-winning calf strength.",
+  meta_description: 'Most runners train quads and glutes — but weak calves limit your speed. Learn which muscle actually powers your race pace and how to strengthen it.',
   seo_keywords: 'calf strength running, soleus muscle, distance running performance, running economy, Achilles tendon strength, ankle plantarflexors',
   featured_image_url: null,
   featured_image_alt: null,
@@ -69,7 +69,7 @@ export const calfStrengthPost: BlogPost = {
 
 <p><strong>Elastic energy return:</strong> Research in the <em>Journal of Experimental Biology</em> demonstrated that the Achilles tendon acts as a spring during running, storing and releasing elastic energy with each stride. Stronger calf muscles and stiffer tendons improve this energy return, leading to more efficient running—you literally bounce better.</p>
 
-<p><strong>Injury prevention:</strong> Multiple studies link weak calf strength to common running injuries including Achilles tendinopathy, plantar fasciitis, shin splints, and calf strains. Insufficient calf strength means the Achilles tendon absorbs more stress than it can handle, foot mechanics alter to increase plantar fascia strain, and the anterior tibialis must work harder to compensate.</p>
+<p><strong>Injury prevention:</strong> Multiple studies link weak calf strength to common running injuries including Achilles tendinopathy, plantar fasciitis, shin splints, and calf strains. Insufficient calf strength means the Achilles tendon absorbs more stress than it can handle, foot mechanics alter to increase plantar fascia strain, and the anterior tibialis must work harder to compensate. However, it's important to note that many running injuries—including <a href="/blog/it-band-syndrome-runners-hip-strength">IT band syndrome</a>—often stem from weak hip stabilizers rather than calf weakness, highlighting the need for a comprehensive strength assessment.</p>
 
 <div style="background-color: #f8fafc; border-left: 4px solid #059669; padding: 24px; margin: 32px 0; border-radius: 8px;">
 <h3 style="margin-top: 0; color: #0f172a; font-size: 1.25rem; font-weight: 600;">Not Sure If This Applies to You?</h3>
@@ -93,7 +93,7 @@ export const calfStrengthPost: BlogPost = {
 <li>Want to improve running economy and performance without just adding more mileage</li>
 </ul>
 
-<p>Most runners assume their calves are strong because they run frequently. But running builds calf endurance, not maximum strength. To actually increase muscle strength, research shows you need to load the muscle with forces significantly higher than it experiences during normal running.</p>
+<p>Most runners assume their calves are strong because they run frequently. But running builds calf endurance, not maximum strength. To actually increase muscle strength, research shows you need to load the muscle with forces significantly higher than it experiences during normal running. While calf strength is critical for distance running performance, don't neglect <a href="/blog/hip-strength-running-performance">hip strength training</a>—weak hips are the root cause of most running injuries and can limit your performance gains.</p>
 
 <h3>How to Apply the Findings</h3>
 
@@ -185,4 +185,5 @@ Hold heavy dumbbells or kettlebells at your sides (start with 25-50% of your bod
 <p><strong>About the Author</strong><br>
 Dr. Spencer Agnew is a Doctor of Physical Therapy specializing in running biomechanics and injury prevention. He has worked with over 500 runners as both a physical therapist and run coach, helping them overcome injuries and improve performance through evidence-based strength training and movement analysis.</p>`
 };
+
 

@@ -19,3 +19,4 @@ export interface BlogPost {
   updated_at: string | null;
 }
 
+

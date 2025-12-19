@@ -6,10 +6,12 @@ import { itBandPost } from './it-band';
 import { strideLengthPost } from './stride-length';
 import { calfStrengthPost } from './calf-strength';
 import { heavyWeightsPost } from './heavy-weights';
+import { musclesThatMatterPost } from './muscles-that-matter';
 import { BlogPost } from './types';
 
 // All blog posts sorted by published date (newest first)
 export const blogPosts: BlogPost[] = [
+  musclesThatMatterPost,
   heavyWeightsPost,
   calfStrengthPost,
   strideLengthPost,
@@ -37,4 +39,5 @@ export function getRelatedPosts(currentSlug: string, limit: number = 3): BlogPos
     .filter(post => post.slug !== currentSlug && post.is_published)
     .slice(0, limit);
 }
+
 
