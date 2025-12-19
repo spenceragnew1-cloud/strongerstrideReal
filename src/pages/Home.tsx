@@ -2,6 +2,7 @@ import { ArrowRight, Target, Award, User, BookOpen, TrendingUp } from 'lucide-re
 import { trackAssessmentButtonClick } from '../lib/analytics';
 import MetaTags from '../components/MetaTags';
 import AsFeaturedIn from '../components/AsFeaturedIn';
+import { getPublishedPosts } from '../data/blog-posts';
 
 type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
 
@@ -14,6 +15,9 @@ export default function Home({ onNavigate }: HomeProps) {
     trackAssessmentButtonClick(source);
     onNavigate('assessment');
   };
+
+  // Get recent blog posts for homepage
+  const recentPosts = getPublishedPosts().slice(0, 3);
 
   return (
     <>
@@ -220,29 +224,25 @@ export default function Home({ onNavigate }: HomeProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-            <div className="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:shadow-lg transition-shadow">
-              <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-lg mb-4">
-                <BookOpen className="w-6 h-6 text-green-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Why Strength Training Improves Running Economy</h3>
-              <p className="text-slate-600">Coming soon...</p>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:shadow-lg transition-shadow">
-              <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-lg mb-4">
-                <TrendingUp className="w-6 h-6 text-green-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">3 Most Common Weaknesses in Distance Runners</h3>
-              <p className="text-slate-600">Coming soon...</p>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:shadow-lg transition-shadow">
-              <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-lg mb-4">
-                <Target className="w-6 h-6 text-green-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">How Hip Stability Impacts Your Stride</h3>
-              <p className="text-slate-600">Coming soon...</p>
-            </div>
+            {recentPosts.map((post) => (
+              <a
+                key={post.id}
+                href={`/blog/${post.slug}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('blog-post', { slug: post.slug });
+                }}
+                className="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:shadow-lg transition-shadow block"
+              >
+                <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-lg mb-4">
+                  <BookOpen className="w-6 h-6 text-green-600" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-green-600 transition-colors">
+                  {post.title.length > 60 ? post.title.substring(0, 60) + '...' : post.title}
+                </h3>
+                <p className="text-slate-600 text-sm">{post.excerpt ? post.excerpt.substring(0, 100) + '...' : 'Read more →'}</p>
+              </a>
+            ))}
           </div>
 
           <div className="text-center">

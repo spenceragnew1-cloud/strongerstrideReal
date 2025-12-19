@@ -153,16 +153,51 @@ export default function AssessmentPage({ onNavigate }: AssessmentPageProps) {
       <div className="h-[calc(100vh-64px)] bg-gradient-to-br from-green-50 to-slate-50 flex flex-col overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col min-h-0">
         <div className="mb-3 flex-shrink-0">
-          <a
-            href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              onNavigate('home');
-            }}
-            className="inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-700 transition-colors text-sm mb-2"
-          >
-            ← Back to Home
-          </a>
+          <div className="flex items-center gap-2 text-xs text-slate-500 mb-2">
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('home');
+              }}
+              className="hover:text-green-600 transition-colors"
+            >
+              Home
+            </a>
+            <span>•</span>
+            <a
+              href="/programs"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('programs');
+              }}
+              className="hover:text-green-600 transition-colors"
+            >
+              Programs
+            </a>
+            <span>•</span>
+            <a
+              href="/blog"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('blog');
+              }}
+              className="hover:text-green-600 transition-colors"
+            >
+              Blog
+            </a>
+            <span>•</span>
+            <a
+              href="/about"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('about');
+              }}
+              className="hover:text-green-600 transition-colors"
+            >
+              About
+            </a>
+          </div>
         </div>
         <div className="mb-3 flex-shrink-0">
           <div className="flex items-center justify-between mb-2">

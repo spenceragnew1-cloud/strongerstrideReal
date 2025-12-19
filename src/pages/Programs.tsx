@@ -67,6 +67,40 @@ export default function Programs({ onNavigate }: ProgramsProps) {
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-slate-50">
       <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
+          <div className="flex justify-center gap-2 text-xs text-slate-500 mb-4">
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('home');
+              }}
+              className="hover:text-green-600 transition-colors"
+            >
+              Home
+            </a>
+            <span>•</span>
+            <a
+              href="/blog"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('blog');
+              }}
+              className="hover:text-green-600 transition-colors"
+            >
+              Blog
+            </a>
+            <span>•</span>
+            <a
+              href="/about"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('about');
+              }}
+              className="hover:text-green-600 transition-colors"
+            >
+              About
+            </a>
+          </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">
             Strength Programs Built for Runners
           </h1>

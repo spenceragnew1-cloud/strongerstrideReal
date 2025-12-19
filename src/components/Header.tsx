@@ -27,8 +27,12 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
           </a>
 
           <nav className="flex items-center gap-8">
-            <button
-              onClick={() => onNavigate('assessment')}
+            <a
+              href="/assessment"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('assessment');
+              }}
               className={`text-sm font-medium transition-colors ${
                 currentPage === 'assessment'
                   ? 'text-green-500'
@@ -36,10 +40,14 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
               }`}
             >
               Free Assessment
-            </button>
+            </a>
 
-            <button
-              onClick={() => onNavigate('programs')}
+            <a
+              href="/programs"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('programs');
+              }}
               className={`text-sm font-medium transition-colors ${
                 currentPage === 'programs'
                   ? 'text-green-500'
@@ -47,10 +55,14 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
               }`}
             >
               Programs
-            </button>
+            </a>
 
-            <button
-              onClick={() => onNavigate('blog')}
+            <a
+              href="/blog"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('blog');
+              }}
               className={`text-sm font-medium transition-colors ${
                 currentPage === 'blog' || currentPage === 'blog-post'
                   ? 'text-green-500'
@@ -58,10 +70,14 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
               }`}
             >
               Blog
-            </button>
+            </a>
 
-            <button
-              onClick={() => onNavigate('about')}
+            <a
+              href="/about"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('about');
+              }}
               className={`text-sm font-medium transition-colors ${
                 currentPage === 'about'
                   ? 'text-green-500'
@@ -69,7 +85,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
               }`}
             >
               About
-            </button>
+            </a>
           </nav>
         </div>
       </div>

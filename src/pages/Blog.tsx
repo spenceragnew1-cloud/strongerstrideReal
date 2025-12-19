@@ -23,16 +23,51 @@ export default function Blog({ onNavigate }: BlogProps) {
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-slate-50">
       <div className="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="mb-6">
-          <a
-            href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              onNavigate('home');
-            }}
-            className="inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-700 transition-colors text-sm"
-          >
-            ← Back to Home
-          </a>
+          <div className="flex items-center gap-2 text-xs text-slate-500 mb-2">
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('home');
+              }}
+              className="hover:text-green-600 transition-colors"
+            >
+              Home
+            </a>
+            <span>•</span>
+            <a
+              href="/programs"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('programs');
+              }}
+              className="hover:text-green-600 transition-colors"
+            >
+              Programs
+            </a>
+            <span>•</span>
+            <a
+              href="/assessment"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('assessment');
+              }}
+              className="hover:text-green-600 transition-colors"
+            >
+              Assessment
+            </a>
+            <span>•</span>
+            <a
+              href="/about"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('about');
+              }}
+              className="hover:text-green-600 transition-colors"
+            >
+              About
+            </a>
+          </div>
         </div>
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">

@@ -49,24 +49,15 @@ export default function MetaTags({
 
     // Helper function to set or update link tag - ensures canonical is always updated
     const setLinkTag = (rel: string, href: string) => {
-      // Find all existing links with this rel (should only be one, but handle multiple)
+      // Remove ALL existing links with this rel first (prevents duplicates)
       const existingLinks = document.querySelectorAll(`link[rel="${rel}"]`);
+      existingLinks.forEach(link => link.remove());
       
-      // Remove any duplicate canonical links (keep only the first one)
-      if (existingLinks.length > 1) {
-        for (let i = 1; i < existingLinks.length; i++) {
-          existingLinks[i].remove();
-        }
-      }
-      
-      let link = existingLinks[0] as HTMLLinkElement;
-      if (!link) {
-        link = document.createElement('link');
-        link.rel = rel;
-        document.head.appendChild(link);
-      }
-      // Always update href to ensure correct canonical
+      // Create new link tag
+      const link = document.createElement('link');
+      link.rel = rel;
       link.href = href;
+      document.head.appendChild(link);
     };
 
     // Basic meta tags
