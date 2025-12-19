@@ -6,6 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Runner Movement Assessment &amp; Training</title>
 
+    <!-- Set canonical URL synchronously before React loads -->
+    <script>
+      (function() {
+        var path = window.location.pathname;
+        var baseUrl = 'https://strongerstride.com';
+        var canonicalUrl = baseUrl + (path === '/' ? '/' : path.replace(/\/$/, ''));
+        
+        // Remove any existing canonical link
+        var existing = document.querySelector('link[rel="canonical"]');
+        if (existing) existing.remove();
+        
+        // Create and add canonical link
+        var link = document.createElement('link');
+        link.rel = 'canonical';
+        link.href = canonicalUrl;
+        document.head.appendChild(link);
+      })();
+    </script>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PPM0SYFPKH"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
