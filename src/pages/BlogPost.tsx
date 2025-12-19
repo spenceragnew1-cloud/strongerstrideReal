@@ -1,6 +1,6 @@
 import { ArrowLeft, Calendar, Clock, Share2, Facebook, Twitter, Linkedin, Mail } from 'lucide-react';
 import SchemaMarkup from '../components/SchemaMarkup';
-import MetaTags from '../components/MetaTags';
+import SEO from '../components/SEO';
 import { generateArticleSchema, generateBreadcrumbSchema, getBlogSpecificSchemas } from '../lib/schema';
 import { trackAssessmentButtonClick } from '../lib/analytics';
 import { getPostBySlug, getRelatedPosts, BlogPost } from '../data/blog-posts';
@@ -49,7 +49,7 @@ export default function BlogPostPage({ slug, onNavigate }: BlogPostProps) {
   const authorName = post.author_name || post.author || 'StrongerStride Team';
   const publishedDate = post.published_at ? new Date(post.published_at) : null;
   const updatedDate = post.updated_at ? new Date(post.updated_at) : publishedDate;
-  const canonicalUrl = `https://strongerstride.com/blog/${post.slug}`;
+  const canonicalPath = `/blog/${post.slug}`;
   const imageUrl = post.featured_image_url || 'https://strongerstride.com/logo.png';
   const shareUrl = `https://strongerstride.com/blog/${slug}`;
 
@@ -96,10 +96,10 @@ export default function BlogPostPage({ slug, onNavigate }: BlogPostProps) {
 
   return (
     <>
-      <MetaTags
+      <SEO
         title={fullTitle}
         description={metaDescription}
-        canonical={canonicalUrl}
+        canonicalPath={canonicalPath}
         image={imageUrl}
         imageAlt={post.featured_image_alt || post.title}
         publishedTime={publishedDate?.toISOString()}

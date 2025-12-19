@@ -1,6 +1,6 @@
 import { ArrowRight, Award, BookOpen, Users, MapPin, GraduationCap, Heart, Timer } from 'lucide-react';
 import { trackAssessmentButtonClick } from '../lib/analytics';
-import MetaTags from '../components/MetaTags';
+import SEO from '../components/SEO';
 import AsFeaturedIn from '../components/AsFeaturedIn';
 
 type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
@@ -17,10 +17,10 @@ export default function About({ onNavigate }: AboutProps) {
 
   return (
     <>
-      <MetaTags
+      <SEO
         title="About Dr. Spencer Agnew | StrongerStride"
         description="Doctor of Physical Therapy specializing in running biomechanics and performance. Evidence-based training, injury resilience, and runner movement assessments."
-        canonical="https://strongerstride.com/about"
+        canonicalPath="/about"
         type="website"
       />
       <div className="bg-white">

@@ -3,7 +3,7 @@ import { supabase, Exercise, Assessment, AssessmentResult } from '../lib/supabas
 import ExerciseCard from '../components/ExerciseCard';
 import { ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react';
 import { trackAssessmentStarted } from '../lib/analytics';
-import MetaTags from '../components/MetaTags';
+import SEO from '../components/SEO';
 
 type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
 
@@ -144,10 +144,10 @@ export default function AssessmentPage({ onNavigate }: AssessmentPageProps) {
 
   return (
     <>
-      <MetaTags
+      <SEO
         title="Free Runner Strength Assessment | StrongerStride"
         description="Take a 10-minute, research-based strength assessment to identify your specific weaknesses and get personalized recommendations. Created by a Doctor of Physical Therapy."
-        canonical="https://strongerstride.com/assessment"
+        canonicalPath="/assessment"
         type="website"
       />
       <div className="h-[calc(100vh-64px)] bg-gradient-to-br from-green-50 to-slate-50 flex flex-col overflow-hidden">

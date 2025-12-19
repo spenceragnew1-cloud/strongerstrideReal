@@ -6,4 +6,6 @@
 /7-day-challenge  /index.html  410
 /workout      /index.html  410
 
+# SPA fallback for routes without prerendered HTML
+# Note: Netlify automatically serves prerendered HTML files if they exist
 /*    /index.html   200

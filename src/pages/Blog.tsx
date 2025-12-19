@@ -1,5 +1,5 @@
 import { ArrowRight, Calendar } from 'lucide-react';
-import MetaTags from '../components/MetaTags';
+import SEO from '../components/SEO';
 import { getPublishedPosts, BlogPost } from '../data/blog-posts';
 
 type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
@@ -14,10 +14,10 @@ export default function Blog({ onNavigate }: BlogProps) {
 
   return (
     <>
-      <MetaTags
+      <SEO
         title="Running Strength & Training Blog | StrongerStride"
         description="Evidence-based insights on injury prevention, training strategies, and runner health. Learn from research-backed articles on strength training for runners."
-        canonical="https://strongerstride.com/blog"
+        canonicalPath="/blog"
         type="website"
       />
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-slate-50">
