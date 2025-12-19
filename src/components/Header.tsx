@@ -10,8 +10,12 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
     <header className="border-b border-slate-200 bg-white sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <button
-            onClick={() => onNavigate('home')}
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('home');
+            }}
             className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity"
           >
             <img
@@ -20,7 +24,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
               className="h-12 w-auto"
             />
             <span className="text-xl font-semibold text-slate-900">Stronger Stride</span>
-          </button>
+          </a>
 
           <nav className="flex items-center gap-8">
             <button

@@ -33,12 +33,16 @@ export default function Home({ onNavigate }: HomeProps) {
           <p className="text-xl sm:text-2xl text-slate-600 mb-10 max-w-3xl mx-auto leading-relaxed">
             Take a 10-minute, research-based assessment to discover which weaknesses are affecting your running—and get a personalized 12-week program to fix them.
           </p>
-          <button
-            onClick={() => handleAssessmentClick('hero')}
+          <a
+            href="/assessment"
+            onClick={(e) => {
+              e.preventDefault();
+              handleAssessmentClick('hero');
+            }}
             className="inline-flex items-center gap-3 bg-green-500 text-white px-12 py-5 rounded-lg font-bold hover:bg-green-600 transition-colors shadow-lg shadow-green-500/30 text-xl"
           >
             Take the Free Assessment <ArrowRight className="w-6 h-6" />
-          </button>
+          </a>
           <p className="text-sm text-slate-500 mt-6">
             ✓ Based on research • ✓ Created by a Doctor of Physical Therapy • ✓ Takes 10 minutes
           </p>
@@ -68,7 +72,18 @@ export default function Home({ onNavigate }: HomeProps) {
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">Expert-Created</h3>
               <p className="text-lg text-slate-600 leading-relaxed">
-                Developed by Dr. Spencer Agnew, DPT, with 500+ runners coached.
+                Developed by{' '}
+                <a
+                  href="/about"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('about');
+                  }}
+                  className="text-green-600 hover:text-green-700 font-semibold underline"
+                >
+                  Dr. Spencer Agnew, DPT
+                </a>
+                , with 500+ runners coached.
               </p>
             </div>
 
@@ -97,12 +112,16 @@ export default function Home({ onNavigate }: HomeProps) {
           <p className="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
             Find YOUR weak links, then follow a program designed by a DPT who specializes in running mechanics.
           </p>
-          <button
-            onClick={() => handleAssessmentClick('stop-guessing')}
+          <a
+            href="/assessment"
+            onClick={(e) => {
+              e.preventDefault();
+              handleAssessmentClick('stop-guessing');
+            }}
             className="inline-flex items-center gap-3 bg-green-500 text-white px-12 py-5 rounded-lg font-bold hover:bg-green-600 transition-colors shadow-lg shadow-green-500/30 text-xl"
           >
             Take the Free Assessment <ArrowRight className="w-6 h-6" />
-          </button>
+          </a>
         </div>
       </section>
 
@@ -149,12 +168,16 @@ export default function Home({ onNavigate }: HomeProps) {
           </div>
 
           <div className="text-center">
-            <button
-              onClick={() => onNavigate('programs')}
+            <a
+              href="/programs"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('programs');
+              }}
               className="inline-flex items-center gap-3 bg-slate-900 text-white px-10 py-4 rounded-lg font-bold hover:bg-slate-800 transition-colors text-lg"
             >
               Explore All Programs <ArrowRight className="w-5 h-5" />
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -223,12 +246,16 @@ export default function Home({ onNavigate }: HomeProps) {
           </div>
 
           <div className="text-center">
-            <button
-              onClick={() => onNavigate('blog')}
+            <a
+              href="/blog"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('blog');
+              }}
               className="inline-flex items-center gap-3 bg-slate-900 text-white px-10 py-4 rounded-lg font-bold hover:bg-slate-800 transition-colors text-lg"
             >
               Read the Research <ArrowRight className="w-5 h-5" />
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -243,12 +270,16 @@ export default function Home({ onNavigate }: HomeProps) {
             <p className="text-xl text-green-50 mb-8 max-w-2xl mx-auto leading-relaxed">
               Take the free, 10-minute assessment to get a personalized report showing exactly what you need to strengthen to run pain-free and perform better.
             </p>
-            <button
-              onClick={() => handleAssessmentClick('final-cta')}
+            <a
+              href="/assessment"
+              onClick={(e) => {
+                e.preventDefault();
+                handleAssessmentClick('final-cta');
+              }}
               className="inline-flex items-center gap-3 bg-white text-green-600 px-12 py-5 rounded-lg font-bold hover:bg-green-50 transition-all hover:scale-105 shadow-lg text-xl"
             >
               Take the Free Assessment <ArrowRight className="w-6 h-6" />
-            </button>
+            </a>
           </div>
         </div>
       </section>

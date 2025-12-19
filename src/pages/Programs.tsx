@@ -109,12 +109,16 @@ export default function Programs({ onNavigate }: ProgramsProps) {
               <p className="text-slate-700 mb-4">
                 Take the free movement assessment to get personalized recommendations based on your specific deficits.
               </p>
-              <button
-                onClick={handleAssessmentClick}
+              <a
+                href="/assessment"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleAssessmentClick();
+                }}
                 className="inline-block bg-green-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors"
               >
                 Start Assessment
-              </button>
+              </a>
             </div>
           </div>
         </div>

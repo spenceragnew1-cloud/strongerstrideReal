@@ -113,12 +113,16 @@ export default function BlogPostPage({ slug, onNavigate }: BlogPostProps) {
       {/* Header Navigation */}
       <div className="bg-gradient-to-br from-green-50 to-slate-50 border-b border-slate-200">
         <div className="max-w-4xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
-          <button
-            onClick={() => onNavigate('blog')}
+          <a
+            href="/blog"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('blog');
+            }}
             className="inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-700 transition-colors"
           >
             <ArrowLeft className="w-5 h-5" /> Back to Blog
-          </button>
+          </a>
         </div>
       </div>
 

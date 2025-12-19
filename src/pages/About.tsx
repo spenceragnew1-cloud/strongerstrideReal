@@ -288,9 +288,13 @@ export default function About({ onNavigate }: AboutProps) {
               Explore StrongerStride
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <button
-                onClick={() => onNavigate('blog')}
-                className="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:shadow-lg transition-shadow text-left group"
+              <a
+                href="/blog"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('blog');
+                }}
+                className="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:shadow-lg transition-shadow text-left group block"
               >
                 <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-green-600 transition-colors">
                   Read the Blog →
@@ -298,11 +302,15 @@ export default function About({ onNavigate }: AboutProps) {
                 <p className="text-slate-600">
                   Evidence-based articles on running strength, injury prevention, and performance.
                 </p>
-              </button>
+              </a>
 
-              <button
-                onClick={() => onNavigate('programs')}
-                className="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:shadow-lg transition-shadow text-left group"
+              <a
+                href="/programs"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('programs');
+                }}
+                className="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:shadow-lg transition-shadow text-left group block"
               >
                 <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-green-600 transition-colors">
                   View Programs →
@@ -310,11 +318,15 @@ export default function About({ onNavigate }: AboutProps) {
                 <p className="text-slate-600">
                   12-week strength programs designed for runners, based on your assessment results.
                 </p>
-              </button>
+              </a>
 
-              <button
-                onClick={() => handleAssessmentClick('about-explore')}
-                className="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:shadow-lg transition-shadow text-left group"
+              <a
+                href="/assessment"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleAssessmentClick('about-explore');
+                }}
+                className="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:shadow-lg transition-shadow text-left group block"
               >
                 <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-green-600 transition-colors">
                   Take the Assessment →
@@ -322,7 +334,7 @@ export default function About({ onNavigate }: AboutProps) {
                 <p className="text-slate-600">
                   Discover your specific weaknesses in 10 minutes with our free assessment.
                 </p>
-              </button>
+              </a>
             </div>
           </div>
         </section>
@@ -337,12 +349,16 @@ export default function About({ onNavigate }: AboutProps) {
               <p className="text-xl text-green-50 mb-8 max-w-2xl mx-auto leading-relaxed">
                 Take the free, 10-minute assessment and get a personalized report showing exactly what you need to strengthen to run pain-free and perform better.
               </p>
-              <button
-                onClick={() => handleAssessmentClick('about-cta')}
+              <a
+                href="/assessment"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleAssessmentClick('about-cta');
+                }}
                 className="inline-flex items-center gap-3 bg-white text-green-600 px-12 py-5 rounded-lg font-bold hover:bg-green-50 transition-all hover:scale-105 shadow-lg text-xl"
               >
                 Take the Free Assessment <ArrowRight className="w-6 h-6" />
-              </button>
+              </a>
             </div>
           </div>
         </section>

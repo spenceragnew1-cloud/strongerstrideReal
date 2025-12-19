@@ -13,8 +13,12 @@ export default function Footer({ onNavigate }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-1">
-            <button
-              onClick={() => onNavigate('home')}
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('home');
+              }}
               className="flex items-center gap-2 mb-4 hover:opacity-80 transition-opacity"
             >
               <img
@@ -23,7 +27,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 className="h-10 w-auto brightness-0 invert"
               />
               <span className="text-lg font-semibold">StrongerStride</span>
-            </button>
+            </a>
             <p className="text-slate-400 text-sm">
               Evidence-based strength training for runners. Created by a Doctor of Physical Therapy.
             </p>
@@ -35,6 +39,18 @@ export default function Footer({ onNavigate }: FooterProps) {
               Quick Links
             </h3>
             <ul className="space-y-2">
+              <li>
+                <a
+                  href="/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('home');
+                  }}
+                  className="text-slate-400 hover:text-white transition-colors text-sm"
+                >
+                  Home
+                </a>
+              </li>
               <li>
                 <button
                   onClick={() => onNavigate('assessment')}
@@ -138,5 +154,6 @@ export default function Footer({ onNavigate }: FooterProps) {
     </footer>
   );
 }
+
 
 
