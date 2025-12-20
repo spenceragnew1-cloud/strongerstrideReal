@@ -1,30 +1,22 @@
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Target, Award, User, BookOpen, TrendingUp } from 'lucide-react';
 import { trackAssessmentButtonClick } from '../lib/analytics';
-import SEO from '../components/SEO';
-import AsFeaturedIn from '../components/AsFeaturedIn';
-import { getPublishedPosts } from '../data/blog-posts';
+import MetaTags from '../components/MetaTags';
 
-type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
+export default function Home() {
+  const navigate = useNavigate();
 
-interface HomeProps {
-  onNavigate: (page: Page) => void;
-}
-
-export default function Home({ onNavigate }: HomeProps) {
   const handleAssessmentClick = (source: string) => {
     trackAssessmentButtonClick(source);
-    onNavigate('assessment');
+    navigate('/assessment');
   };
-
-  // Get recent blog posts for homepage
-  const recentPosts = getPublishedPosts().slice(0, 3);
 
   return (
     <>
-      <SEO
-        title="StrongerStride - Strength Training for Runners | Free Assessment"
-        description="Take a 10-minute, research-based assessment to discover which weaknesses are affecting your running—and get a personalized 12-week program to fix them. Created by a Doctor of Physical Therapy."
-        canonicalPath="/"
+      <MetaTags
+        title="StrongerStride - Strength Training for Runners"
+        description="Take a 10-minute, research-based assessment to discover which weaknesses are affecting your running—and get a personalized 12-week program to fix them."
+        canonical="https://strongerstride.com/"
         type="website"
       />
       <div className="bg-white">
@@ -37,24 +29,17 @@ export default function Home({ onNavigate }: HomeProps) {
           <p className="text-xl sm:text-2xl text-slate-600 mb-10 max-w-3xl mx-auto leading-relaxed">
             Take a 10-minute, research-based assessment to discover which weaknesses are affecting your running—and get a personalized 12-week program to fix them.
           </p>
-          <a
-            href="/assessment"
-            onClick={(e) => {
-              e.preventDefault();
-              handleAssessmentClick('hero');
-            }}
+          <button
+            onClick={() => handleAssessmentClick('hero')}
             className="inline-flex items-center gap-3 bg-green-500 text-white px-12 py-5 rounded-lg font-bold hover:bg-green-600 transition-colors shadow-lg shadow-green-500/30 text-xl"
           >
             Take the Free Assessment <ArrowRight className="w-6 h-6" />
-          </a>
+          </button>
           <p className="text-sm text-slate-500 mt-6">
             ✓ Based on research • ✓ Created by a Doctor of Physical Therapy • ✓ Takes 10 minutes
           </p>
         </div>
       </section>
-
-      {/* AS FEATURED IN */}
-      <AsFeaturedIn />
 
       {/* SECTION 2 - VALUE PROPS */}
       <section className="bg-slate-50 py-20">
@@ -76,18 +61,7 @@ export default function Home({ onNavigate }: HomeProps) {
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">Expert-Created</h3>
               <p className="text-lg text-slate-600 leading-relaxed">
-                Developed by{' '}
-                <a
-                  href="/about"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onNavigate('about');
-                  }}
-                  className="text-green-600 hover:text-green-700 font-semibold underline"
-                >
-                  Dr. Spencer Agnew, DPT
-                </a>
-                , with 500+ runners coached.
+                Developed by Dr. Spencer Agnew, DPT, with 500+ runners coached.
               </p>
             </div>
 
@@ -116,16 +90,12 @@ export default function Home({ onNavigate }: HomeProps) {
           <p className="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
             Find YOUR weak links, then follow a program designed by a DPT who specializes in running mechanics.
           </p>
-          <a
-            href="/assessment"
-            onClick={(e) => {
-              e.preventDefault();
-              handleAssessmentClick('stop-guessing');
-            }}
+          <button
+            onClick={() => handleAssessmentClick('stop-guessing')}
             className="inline-flex items-center gap-3 bg-green-500 text-white px-12 py-5 rounded-lg font-bold hover:bg-green-600 transition-colors shadow-lg shadow-green-500/30 text-xl"
           >
             Take the Free Assessment <ArrowRight className="w-6 h-6" />
-          </a>
+          </button>
         </div>
       </section>
 
@@ -172,16 +142,12 @@ export default function Home({ onNavigate }: HomeProps) {
           </div>
 
           <div className="text-center">
-            <a
-              href="/programs"
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('programs');
-              }}
+            <button
+              onClick={() => navigate('/programs')}
               className="inline-flex items-center gap-3 bg-slate-900 text-white px-10 py-4 rounded-lg font-bold hover:bg-slate-800 transition-colors text-lg"
             >
               Explore All Programs <ArrowRight className="w-5 h-5" />
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -224,38 +190,38 @@ export default function Home({ onNavigate }: HomeProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-            {recentPosts.map((post) => (
-              <a
-                key={post.id}
-                href={`/blog/${post.slug}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  onNavigate('blog-post', { slug: post.slug });
-                }}
-                className="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:shadow-lg transition-shadow block"
-              >
-                <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-lg mb-4">
-                  <BookOpen className="w-6 h-6 text-green-600" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-green-600 transition-colors">
-                  {post.title.length > 60 ? post.title.substring(0, 60) + '...' : post.title}
-                </h3>
-                <p className="text-slate-600 text-sm">{post.excerpt ? post.excerpt.substring(0, 100) + '...' : 'Read more →'}</p>
-              </a>
-            ))}
+            <div className="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:shadow-lg transition-shadow">
+              <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-lg mb-4">
+                <BookOpen className="w-6 h-6 text-green-600" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Why Strength Training Improves Running Economy</h3>
+              <p className="text-slate-600">Coming soon...</p>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:shadow-lg transition-shadow">
+              <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-lg mb-4">
+                <TrendingUp className="w-6 h-6 text-green-600" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">3 Most Common Weaknesses in Distance Runners</h3>
+              <p className="text-slate-600">Coming soon...</p>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:shadow-lg transition-shadow">
+              <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-lg mb-4">
+                <Target className="w-6 h-6 text-green-600" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">How Hip Stability Impacts Your Stride</h3>
+              <p className="text-slate-600">Coming soon...</p>
+            </div>
           </div>
 
           <div className="text-center">
-            <a
-              href="/blog"
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('blog');
-              }}
+            <button
+              onClick={() => navigate('/blog')}
               className="inline-flex items-center gap-3 bg-slate-900 text-white px-10 py-4 rounded-lg font-bold hover:bg-slate-800 transition-colors text-lg"
             >
               Read the Research <ArrowRight className="w-5 h-5" />
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -270,16 +236,12 @@ export default function Home({ onNavigate }: HomeProps) {
             <p className="text-xl text-green-50 mb-8 max-w-2xl mx-auto leading-relaxed">
               Take the free, 10-minute assessment to get a personalized report showing exactly what you need to strengthen to run pain-free and perform better.
             </p>
-            <a
-              href="/assessment"
-              onClick={(e) => {
-                e.preventDefault();
-                handleAssessmentClick('final-cta');
-              }}
+            <button
+              onClick={() => handleAssessmentClick('final-cta')}
               className="inline-flex items-center gap-3 bg-white text-green-600 px-12 py-5 rounded-lg font-bold hover:bg-green-50 transition-all hover:scale-105 shadow-lg text-xl"
             >
               Take the Free Assessment <ArrowRight className="w-6 h-6" />
-            </a>
+            </button>
           </div>
         </div>
       </section>

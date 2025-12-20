@@ -1,74 +1,54 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { supabase, BlogPost } from '../lib/supabase';
 import { ArrowRight, Calendar } from 'lucide-react';
-import SEO from '../components/SEO';
-import { getPublishedPosts, BlogPost } from '../data/blog-posts';
+import MetaTags from '../components/MetaTags';
 
-type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
+export default function Blog() {
+  const navigate = useNavigate();
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
 
-interface BlogProps {
-  onNavigate: (page: Page, options?: { slug?: string }) => void;
-}
+  useEffect(() => {
+    const loadPosts = async () => {
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .eq('is_published', true)
+        .order('published_at', { ascending: false });
 
-export default function Blog({ onNavigate }: BlogProps) {
-  // Get posts from local data (no async needed)
-  const posts: BlogPost[] = getPublishedPosts();
+      if (error) {
+        console.error('Error loading blog posts:', error);
+      } else {
+        setPosts(data || []);
+      }
+      setLoading(false);
+    };
+
+    loadPosts();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-green-200 border-t-green-600 rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-slate-600">Loading blog posts...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
-      <SEO
+      <MetaTags
         title="Running Strength & Training Blog | StrongerStride"
-        description="Evidence-based insights on injury prevention, training strategies, and runner health. Learn from research-backed articles on strength training for runners."
-        canonicalPath="/blog"
+        description="Evidence-based insights on injury prevention, training strategies, and runner health."
+        canonical="https://strongerstride.com/blog"
         type="website"
       />
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-slate-50">
       <div className="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mb-6">
-          <div className="flex items-center gap-2 text-xs text-slate-500 mb-2">
-            <a
-              href="/"
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('home');
-              }}
-              className="hover:text-green-600 transition-colors"
-            >
-              Home
-            </a>
-            <span>•</span>
-            <a
-              href="/programs"
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('programs');
-              }}
-              className="hover:text-green-600 transition-colors"
-            >
-              Programs
-            </a>
-            <span>•</span>
-            <a
-              href="/assessment"
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('assessment');
-              }}
-              className="hover:text-green-600 transition-colors"
-            >
-              Assessment
-            </a>
-            <span>•</span>
-            <a
-              href="/about"
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('about');
-              }}
-              className="hover:text-green-600 transition-colors"
-            >
-              About
-            </a>
-          </div>
-        </div>
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">
             Running Strength & Training Blog
@@ -84,7 +64,7 @@ export default function Blog({ onNavigate }: BlogProps) {
               Blog posts coming soon! Check back for evidence-based training content.
             </p>
             <button
-              onClick={() => onNavigate('home')}
+              onClick={() => navigate('/')}
               className="inline-block bg-green-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors"
             >
               Back to Home
@@ -97,14 +77,7 @@ export default function Blog({ onNavigate }: BlogProps) {
                 key={post.id}
                 className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all overflow-hidden border border-slate-200"
               >
-                <a
-                  href={`/blog/${post.slug}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onNavigate('blog-post', { slug: post.slug });
-                  }}
-                  className="flex flex-col md:flex-row"
-                >
+                <div className="flex flex-col md:flex-row">
                   {post.featured_image_url && (
                     <img
                       src={post.featured_image_url}
@@ -128,7 +101,7 @@ export default function Blog({ onNavigate }: BlogProps) {
                       <p className="text-slate-600 mb-3">{post.excerpt}</p>
                       {post.seo_keywords && (
                         <div className="flex flex-wrap gap-2 mb-4">
-                          {post.seo_keywords.split(',').slice(0, 4).map((keyword, idx) => (
+                          {post.seo_keywords.split(',').map((keyword, idx) => (
                             <span
                               key={idx}
                               className="px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-medium"
@@ -139,11 +112,14 @@ export default function Blog({ onNavigate }: BlogProps) {
                         </div>
                       )}
                     </div>
-                    <span className="inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-700 transition-colors w-fit">
+                    <button
+                      onClick={() => navigate(`/blog/${post.slug}`)}
+                      className="inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-700 transition-colors w-fit"
+                    >
                       Read More <ArrowRight className="w-4 h-4" />
-                    </span>
+                    </button>
                   </div>
-                </a>
+                </div>
               </article>
             ))}
           </div>

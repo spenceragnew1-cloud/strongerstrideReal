@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { supabase, Program, AssessmentResult, Exercise } from '../lib/supabase';
 import { analyzeAssessment } from '../lib/assessmentAlgorithm';
 import ProgramCard from '../components/ProgramCard';
 import DeficitsSummary from '../components/DeficitsSummary';
 import { ArrowRight, AlertCircle, CheckCircle, Mail } from 'lucide-react';
 
-type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
-
-interface AssessmentResultsProps {
-  assessmentId: string;
-  onNavigate: (page: Page, options?: { assessmentId?: string }) => void;
-}
+export default function AssessmentResults() {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const assessmentId = searchParams.get('assessment_id') || '';
 
 const DEFICIT_RUNNER_IMPACT: Record<string, string> = {
   'Hip Stability': 'Controls knee alignment and prevents IT band issues, reducing injury risk by up to 70%.',
@@ -40,8 +39,6 @@ function getProgramRationale(programName: string, primaryDeficits: any[]): strin
 
   return rationales[programName] || `Addressing ${topDeficitNames.join(' and ')} first creates a foundation for injury-free running before progressing to more advanced training.`;
 }
-
-export default function AssessmentResults({ assessmentId, onNavigate }: AssessmentResultsProps) {
   const [loading, setLoading] = useState(true);
   const [deficits, setDeficits] = useState<any[]>([]);
   const [topProgram, setTopProgram] = useState<any>(null);
@@ -53,6 +50,8 @@ export default function AssessmentResults({ assessmentId, onNavigate }: Assessme
   const [sendingEmail, setSendingEmail] = useState(false);
 
   useEffect(() => {
+    if (!assessmentId) return;
+
     const loadResults = async () => {
       const { data: results, error: resultsError } = await supabase
         .from('assessment_results')
@@ -146,6 +145,16 @@ export default function AssessmentResults({ assessmentId, onNavigate }: Assessme
     }
   };
 
+  if (!assessmentId) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <div className="text-center">
+          <p className="text-slate-600">No assessment ID provided.</p>
+        </div>
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
@@ -232,16 +241,12 @@ export default function AssessmentResults({ assessmentId, onNavigate }: Assessme
               </p>
             </div>
 
-            <a
-              href="/programs"
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('programs');
-              }}
+            <button
+              onClick={() => navigate('/programs')}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition-colors text-lg"
             >
               View Program & Get Started <ArrowRight className="w-5 h-5" />
-            </a>
+            </button>
           </div>
         )}
 
@@ -257,7 +262,6 @@ export default function AssessmentResults({ assessmentId, onNavigate }: Assessme
                   key={prog.programName}
                   program={fullProgram}
                   matchScore={prog.matchScore}
-                  onNavigate={onNavigate}
                 />
               ) : null;
             })}

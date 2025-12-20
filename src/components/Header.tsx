@@ -1,21 +1,29 @@
-type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
+import { Link, useLocation } from 'react-router-dom';
 
-interface HeaderProps {
-  onNavigate: (page: Page) => void;
-  currentPage: Page;
-}
+export default function Header() {
+  const location = useLocation();
+  const currentPath = location.pathname;
 
-export default function Header({ onNavigate, currentPage }: HeaderProps) {
+  // Determine currentPage from pathname
+  const getCurrentPage = (): string => {
+    if (currentPath === '/') return 'home';
+    if (currentPath === '/assessment') return 'assessment';
+    if (currentPath === '/programs') return 'programs';
+    if (currentPath === '/blog') return 'blog';
+    if (currentPath.startsWith('/blog/')) return 'blog-post';
+    if (currentPath === '/results') return 'results';
+    if (currentPath === '/admin') return 'admin';
+    return 'home';
+  };
+
+  const currentPage = getCurrentPage();
+
   return (
     <header className="border-b border-slate-200 bg-white sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <a
-            href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              onNavigate('home');
-            }}
+          <Link
+            to="/"
             className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity"
           >
             <img
@@ -24,15 +32,11 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
               className="h-12 w-auto"
             />
             <span className="text-xl font-semibold text-slate-900">Stronger Stride</span>
-          </a>
+          </Link>
 
           <nav className="flex items-center gap-8">
-            <a
-              href="/assessment"
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('assessment');
-              }}
+            <Link
+              to="/assessment"
               className={`text-sm font-medium transition-colors ${
                 currentPage === 'assessment'
                   ? 'text-green-500'
@@ -40,14 +44,10 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
               }`}
             >
               Free Assessment
-            </a>
+            </Link>
 
-            <a
-              href="/programs"
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('programs');
-              }}
+            <Link
+              to="/programs"
               className={`text-sm font-medium transition-colors ${
                 currentPage === 'programs'
                   ? 'text-green-500'
@@ -55,14 +55,10 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
               }`}
             >
               Programs
-            </a>
+            </Link>
 
-            <a
-              href="/blog"
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('blog');
-              }}
+            <Link
+              to="/blog"
               className={`text-sm font-medium transition-colors ${
                 currentPage === 'blog' || currentPage === 'blog-post'
                   ? 'text-green-500'
@@ -70,22 +66,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
               }`}
             >
               Blog
-            </a>
-
-            <a
-              href="/about"
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('about');
-              }}
-              className={`text-sm font-medium transition-colors ${
-                currentPage === 'about'
-                  ? 'text-green-500'
-                  : 'text-slate-700 hover:text-green-500'
-              }`}
-            >
-              About
-            </a>
+            </Link>
           </nav>
         </div>
       </div>

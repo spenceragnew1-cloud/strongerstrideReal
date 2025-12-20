@@ -81,13 +81,6 @@ INSERT INTO blog_posts (
 
 <p>Research shows that runners with weak hips have higher peak forces at the knee joint, which over time leads to overuse injuries.⁴</p>
 
-<div style="background-color: #f8fafc; border-left: 4px solid #059669; padding: 24px; margin: 32px 0; border-radius: 8px;">
-<h3 style="margin-top: 0; color: #0f172a; font-size: 1.25rem; font-weight: 600;">Not Sure If This Applies to You?</h3>
-<p style="color: #475569; margin-bottom: 16px; line-height: 1.6;">Research shows strength needs vary widely between runners. Instead of guessing, you can identify your specific limiting factors in under 10 minutes.</p>
-<p style="margin-bottom: 0;"><a href="/assessment" style="display: inline-block; background-color: #059669; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background-color 0.2s;">Take the Free Runner Strength Assessment</a></p>
-<p style="margin-top: 12px; margin-bottom: 0; font-size: 0.875rem; color: #64748b;">Based on research • Created by a Doctor of Physical Therapy</p>
-</div>
-
 <h2>The Research: Hip Strength and Injury Prevention</h2>
 
 <p>The evidence linking hip weakness to running injuries is overwhelming. Here are the key findings:</p>
@@ -306,12 +299,6 @@ INSERT INTO blog_posts (
 <h3>4. Stopping When You Feel Better</h3>
 
 <p>Many runners do hip exercises when they''re injured, feel better, then stop. The exercises need to become part of your permanent routine to maintain the protective benefits.</p>
-
-<h2>Finding Your Starting Point</h2>
-
-<p>While the exercises above are proven to work, every runner has different weaknesses. Some runners need more focus on glute medius strength, while others struggle with hip external rotation control. The key to effective training is identifying your specific deficits and targeting them directly.</p>
-
-<p>Our free runner strength assessment evaluates your hip strength, single-leg stability, and movement patterns to pinpoint exactly where you need to focus. Rather than guessing which exercises you need, you'll get a personalized program based on your actual weaknesses. <a href="/assessment">Take the assessment</a> to discover your specific strength profile and receive targeted recommendations for your individual needs.</p>
 
 <h2>The Bottom Line</h2>
 

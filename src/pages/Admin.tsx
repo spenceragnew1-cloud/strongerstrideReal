@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import { ArrowLeft, TrendingUp, Users, CheckCircle, Activity, MousePointerClick, BarChart3 } from 'lucide-react';
 
-type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'admin' | 'about';
-
-interface AdminProps {
-  onNavigate: (page: Page) => void;
-}
+export default function Admin() {
+  const navigate = useNavigate();
 
 interface OverviewStats {
   total_assessments_started: number;
@@ -44,8 +42,6 @@ interface ConversionStep {
   count: number;
   conversion_rate: number;
 }
-
-export default function Admin({ onNavigate }: AdminProps) {
   const [overviewStats, setOverviewStats] = useState<OverviewStats | null>(null);
   const [dailyActivity, setDailyActivity] = useState<DailyActivity[]>([]);
   const [exerciseScores, setExerciseScores] = useState<ExerciseScore[]>([]);
@@ -132,7 +128,7 @@ export default function Admin({ onNavigate }: AdminProps) {
         {/* Header */}
         <div className="mb-8">
           <button
-            onClick={() => onNavigate('home')}
+            onClick={() => navigate('/')}
             className="inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-700 mb-4 transition-colors"
           >
             <ArrowLeft className="w-5 h-5" /> Back to Home

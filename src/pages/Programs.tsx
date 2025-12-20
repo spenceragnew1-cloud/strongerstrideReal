@@ -1,17 +1,13 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { supabase, Program } from '../lib/supabase';
 import ProgramDetailCard from '../components/ProgramDetailCard';
 import { AlertCircle } from 'lucide-react';
 import { trackProgramClick, trackAssessmentButtonClick } from '../lib/analytics';
-import SEO from '../components/SEO';
+import MetaTags from '../components/MetaTags';
 
-type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
-
-interface ProgramsProps {
-  onNavigate: (page: Page) => void;
-}
-
-export default function Programs({ onNavigate }: ProgramsProps) {
+export default function Programs() {
+  const navigate = useNavigate();
   const [programs, setPrograms] = useState<Program[]>([]);
   const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
   const [loading, setLoading] = useState(true);
@@ -23,7 +19,7 @@ export default function Programs({ onNavigate }: ProgramsProps) {
 
   const handleAssessmentClick = () => {
     trackAssessmentButtonClick('programs-page');
-    onNavigate('assessment');
+    navigate('/assessment');
   };
 
   useEffect(() => {
@@ -58,49 +54,15 @@ export default function Programs({ onNavigate }: ProgramsProps) {
 
   return (
     <>
-      <SEO
-        title="Evidence-Based Strength Programs for Runners | StrongerStride"
-        description="12-week strength programs designed to target specific deficits and improve running performance and injury resilience. Each program is built using sports science principles."
-        canonicalPath="/programs"
+      <MetaTags
+        title="Strength Programs for Runners | StrongerStride"
+        description="Evidence-based 12-week strength programs designed to target specific deficits and improve your running performance and injury resilience."
+        canonical="https://strongerstride.com/programs"
         type="website"
       />
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-slate-50">
       <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <div className="flex justify-center gap-2 text-xs text-slate-500 mb-4">
-            <a
-              href="/"
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('home');
-              }}
-              className="hover:text-green-600 transition-colors"
-            >
-              Home
-            </a>
-            <span>•</span>
-            <a
-              href="/blog"
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('blog');
-              }}
-              className="hover:text-green-600 transition-colors"
-            >
-              Blog
-            </a>
-            <span>•</span>
-            <a
-              href="/about"
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate('about');
-              }}
-              className="hover:text-green-600 transition-colors"
-            >
-              About
-            </a>
-          </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">
             Strength Programs Built for Runners
           </h1>
@@ -143,16 +105,12 @@ export default function Programs({ onNavigate }: ProgramsProps) {
               <p className="text-slate-700 mb-4">
                 Take the free movement assessment to get personalized recommendations based on your specific deficits.
               </p>
-              <a
-                href="/assessment"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleAssessmentClick();
-                }}
+              <button
+                onClick={handleAssessmentClick}
                 className="inline-block bg-green-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors"
               >
                 Start Assessment
-              </a>
+              </button>
             </div>
           </div>
         </div>

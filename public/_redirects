@@ -1,11 +1,2 @@
 /sitemap.xml /sitemap.xml 200
-
-# Legacy URLs - return 410 Gone so Google drops them faster
-/login        /index.html  410
-/pricing      /index.html  410
-/7-day-challenge  /index.html  410
-/workout      /index.html  410
-
-# SPA fallback for routes without prerendered HTML
-# Note: Netlify automatically serves prerendered HTML files if they exist
 /*    /index.html   200

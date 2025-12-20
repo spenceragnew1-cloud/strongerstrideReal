@@ -1,4 +1,4 @@
-import { useLayoutEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 interface MetaTagsProps {
   title: string;
@@ -23,96 +23,48 @@ export default function MetaTags({
   modifiedTime,
   author,
   keywords,
-  type = 'article',
+  type = 'website',
 }: MetaTagsProps) {
-  // Use useLayoutEffect to update tags synchronously before paint
-  useLayoutEffect(() => {
-    // Set title immediately
-    document.title = title;
+  return (
+    <Helmet>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      {keywords && <meta name="keywords" content={keywords} />}
+      <link rel="canonical" href={canonical} />
 
-    // Helper function to set or update meta tag
-    const setMetaTag = (selector: string, attribute: string, content: string) => {
-      let meta = document.querySelector(selector);
-      if (!meta) {
-        meta = document.createElement('meta');
-        if (attribute === 'property') {
-          const propertyName = selector.replace('meta[property="', '').replace('"]', '');
-          meta.setAttribute('property', propertyName);
-        } else {
-          const nameValue = selector.replace('meta[name="', '').replace('"]', '');
-          meta.setAttribute('name', nameValue);
-        }
-        document.head.appendChild(meta);
-      }
-      meta.setAttribute('content', content);
-    };
+      {/* Open Graph */}
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:url" content={canonical} />
+      <meta property="og:type" content={type} />
+      {image && (
+        <>
+          <meta property="og:image" content={image} />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          {imageAlt && <meta property="og:image:alt" content={imageAlt} />}
+        </>
+      )}
 
-    // Helper function to set or update link tag - ensures canonical is always updated
-    const setLinkTag = (rel: string, href: string) => {
-      // Remove ALL existing links with this rel first (prevents duplicates)
-      const existingLinks = document.querySelectorAll(`link[rel="${rel}"]`);
-      existingLinks.forEach(link => link.remove());
-      
-      // Create new link tag
-      const link = document.createElement('link');
-      link.rel = rel;
-      link.href = href;
-      document.head.appendChild(link);
-    };
+      {/* Twitter Card */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      {image && (
+        <>
+          <meta name="twitter:image" content={image} />
+          {imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
+        </>
+      )}
 
-    // Basic meta tags
-    setMetaTag('meta[name="description"]', 'name', description);
-    if (keywords) {
-      setMetaTag('meta[name="keywords"]', 'name', keywords);
-    }
-
-    // Canonical URL
-    setLinkTag('canonical', canonical);
-
-    // Open Graph tags
-    setMetaTag('meta[property="og:title"]', 'property', title);
-    setMetaTag('meta[property="og:description"]', 'property', description);
-    setMetaTag('meta[property="og:url"]', 'property', canonical);
-    setMetaTag('meta[property="og:type"]', 'property', type);
-    if (image) {
-      setMetaTag('meta[property="og:image"]', 'property', image);
-      setMetaTag('meta[property="og:image:width"]', 'property', '1200');
-      setMetaTag('meta[property="og:image:height"]', 'property', '630');
-      if (imageAlt) {
-        setMetaTag('meta[property="og:image:alt"]', 'property', imageAlt);
-      }
-    }
-
-    // Twitter Card tags
-    setMetaTag('meta[name="twitter:card"]', 'name', 'summary_large_image');
-    setMetaTag('meta[name="twitter:title"]', 'name', title);
-    setMetaTag('meta[name="twitter:description"]', 'name', description);
-    if (image) {
-      setMetaTag('meta[name="twitter:image"]', 'name', image);
-      if (imageAlt) {
-        setMetaTag('meta[name="twitter:image:alt"]', 'name', imageAlt);
-      }
-    }
-
-    // Article-specific tags
-    if (type === 'article') {
-      if (publishedTime) {
-        setMetaTag('meta[property="article:published_time"]', 'property', publishedTime);
-      }
-      if (modifiedTime) {
-        setMetaTag('meta[property="article:modified_time"]', 'property', modifiedTime);
-      }
-      if (author) {
-        setMetaTag('meta[property="article:author"]', 'property', author);
-      }
-    }
-
-    // Cleanup function
-    return () => {
-      // Reset to default title on unmount
-      document.title = 'StrongerStride - Strength Training for Runners';
-    };
-  }, [title, description, canonical, image, imageAlt, publishedTime, modifiedTime, author, keywords, type]);
-
-  return null;
+      {/* Article-specific */}
+      {type === 'article' && (
+        <>
+          {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+          {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+          {author && <meta property="article:author" content={author} />}
+        </>
+      )}
+    </Helmet>
+  );
 }

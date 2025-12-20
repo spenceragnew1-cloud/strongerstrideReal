@@ -1,15 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Clock, Zap } from 'lucide-react';
 import { Program } from '../lib/supabase';
-
-type Page = 'home' | 'assessment' | 'programs' | 'blog' | 'blog-post' | 'results' | 'about';
 
 interface ProgramCardProps {
   program: Program;
   matchScore?: number;
-  onNavigate?: (page: Page) => void;
 }
 
-export default function ProgramCard({ program, matchScore, onNavigate }: ProgramCardProps) {
+export default function ProgramCard({ program, matchScore }: ProgramCardProps) {
+  const navigate = useNavigate();
   const price = (program.price / 100).toFixed(2);
 
   return (
@@ -52,7 +51,7 @@ export default function ProgramCard({ program, matchScore, onNavigate }: Program
       <div className="bg-slate-50 p-6 border-t border-slate-200 flex items-center justify-between">
         <div className="text-2xl font-bold text-slate-900">${price}</div>
         <button
-          onClick={() => onNavigate?.('programs')}
+          onClick={() => navigate('/programs')}
           className="inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors"
         >
           Learn More <ArrowRight className="w-4 h-4" />
